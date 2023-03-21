@@ -7,6 +7,6 @@
 .question-item {
   list-style: none;
   text-align: left;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   outline: 2px solid red;
 }
