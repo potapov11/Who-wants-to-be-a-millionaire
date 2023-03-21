@@ -1,0 +1,12 @@
+.container {
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.question-item {
+  list-style: none;
+  text-align: left;
+  margin-bottom: 5px;
+  outline: 2px solid red;
+}
