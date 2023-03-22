@@ -13,14 +13,14 @@ function createQuestion() {
   questionHTMLList.innerHTML = '';
   questionTitle.innerHTML = questionsL[count].question;
   questionsL[count].answers.forEach(item => {
-    console.log(item);
     questionHTMLList.innerHTML += `<li class="question-item">${item}</li>`;
   });
 }
 
+
+
 function getAnswer() {
 
-  
   questionHTMLList.addEventListener('click', (e) => {
     console.log('есть клик');
     if(e.target.tagName !== 'LI') return;
@@ -37,15 +37,17 @@ function getAnswer() {
   });
 }
 
-
-function deleteTwoAnswer() {
-  questionsL[count].incorrectAnswer.forEach(item => {
-    console.log(item);
-    questionHTMLList.innerHTML += `<li class="question-item">${item}</li>`;
+btn50.addEventListener('click', deleteTwoAnswer);
+  function deleteTwoAnswer() {
+  questionHTMLList.childNodes.forEach(item => {
+    console.log(item.textContent);
+    if(item.textContent == questionsL[count].incorrectAnswer[0] || item.textContent == questionsL[count].incorrectAnswer[1]) {
+      item.textContent = '';
+    }
   });
-}
+};
+
 
 getAnswer();
 
-console.log(questionHTMLList.innerHTML);
 
