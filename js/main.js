@@ -38,7 +38,8 @@ function getAnswer() {
 }
 
 btn50.addEventListener('click', deleteTwoAnswer);
-  function deleteTwoAnswer() {
+
+  function deleteTwoAnswer() { //50/50
   questionHTMLList.childNodes.forEach(item => {
     console.log(item.textContent);
     if(item.textContent == questionsL[count].incorrectAnswer[0] || item.textContent == questionsL[count].incorrectAnswer[1]) {

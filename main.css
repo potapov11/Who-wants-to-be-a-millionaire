@@ -1,4 +1,6 @@
 .container {
+  display: flex;
+  flex-direction: column-reverse;
   width: 50%;
   margin: 0 auto;
   text-align: center;
@@ -10,4 +12,8 @@
   margin-bottom: 10px;
   height: 20px;
   outline: 2px solid red;
+}
+
+.number-list {
+  list-style: none;
 }

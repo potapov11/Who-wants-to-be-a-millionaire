@@ -13,7 +13,7 @@ const questionsL = [
   },
   {
     question: 'Что Пётр I велел брить всем боярам и дворянам?',
-    answers: ['Ноги', 'Брови', 'Бороды', 'Брови'],
+    answers: ['Ноги', 'Брови', 'Бороды', 'Руки'],
     correctAnswer: 'Бороды',
     incorrectAnswer: ['Ноги', 'Брови']
 
@@ -36,7 +36,12 @@ const questionsL = [
     answers: ['Александр', 'Евгений', 'Михаил', 'Иван'],
     correctAnswer: 'Евгений',
     incorrectAnswer: ['Михаил', 'Александр']
-
+  },
+  {
+    question: 'Что кричат болельщики на хоккейном матче?',
+    answers: ['Шайбу', 'Клюшку', 'Мама', 'Пожар'],
+    correctAnswer: 'Шайбу',
+    incorrectAnswer: ['Клюшку', 'Пожар']
   },
 ];
 
