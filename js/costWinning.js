@@ -1,6 +1,5 @@
-let arrcostWinning = [100, 200, 300, 400, 500, 1000, 5000, 10000, 15000, 25000, 50000, 100000, 200000];
+let arrcostWinning = [200000, 100000, 500000, 250000, 100000, 50000, 25000, 10000, 5000, 1000, 500, 400, 300, 200, 100];
 arrcostWinning  = arrcostWinning .reverse();
-console.log(arrcostWinning.length);
 
 export const costWiningColumn = document.querySelector('.costWinning');
 

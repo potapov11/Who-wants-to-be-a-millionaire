@@ -32,8 +32,8 @@ function getAnswer() {
     if(e.target.textContent == questionsL[count].correctAnswer) { //Если ответ правильный
       console.log(questionsL[count].correctAnswer);
       alert('все верно');
-      count++;
       upWiningColumn();
+      count++;
       // console.log(count);
       createQuestion();
     } else {
@@ -55,17 +55,11 @@ btn50.addEventListener('click', deleteTwoAnswer);
 };
 
 function upWiningColumn() {
-  let winCountMin = costWiningColumn.childNodes.length - count;
-  costWiningColumn.childNodes[winCountMin].classList.add('costWinRed');
-  console.log(costWiningColumn.childNodes[winCountMin], winCountMin);
-
-  costWiningColumn.childNodes.forEach((item, i)=> {
-    if(item.className == 'costWinning-item costWinRed' && item.nextSibling !== null) {
-      console.dir(item);
-      console.log("ura-ura");
-      item.classList.remove('costWinRed');
-      }
-  });
+  console.log(count);
+  costWiningColumn.childNodes[count].classList.add('costWinRed');
+  if(costWiningColumn.childNodes[count-1]) {
+    costWiningColumn.childNodes[count-1].classList.remove('costWinRed');
+  }
 }  
 
 getAnswer();
