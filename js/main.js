@@ -57,12 +57,14 @@ btn50.addEventListener('click', deleteTwoAnswer);
 function upWiningColumn() {
   let winCountMin = costWiningColumn.childNodes.length - count;
   costWiningColumn.childNodes[winCountMin].classList.add('costWinRed');
-  console.dir(costWiningColumn.childNodes[winCountMin]);
+  console.log(costWiningColumn.childNodes[winCountMin], winCountMin);
 
-  costWiningColumn.childNodes.forEach(item=> {
-    if(item.className == 'costWinning-item costWinRed') {
-      console.log(item);
-    }
+  costWiningColumn.childNodes.forEach((item, i)=> {
+    if(item.className == 'costWinning-item costWinRed' && item.nextSibling !== null) {
+      console.dir(item);
+      console.log("ura-ura");
+      item.classList.remove('costWinRed');
+      }
   });
 }  
 
