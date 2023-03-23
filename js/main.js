@@ -34,7 +34,7 @@ function getAnswer() {
       alert('все верно');
       count++;
       upWiningColumn();
-      console.log(count);
+      // console.log(count);
       createQuestion();
     } else {
       alert('попробуй еще раз');
@@ -55,8 +55,15 @@ btn50.addEventListener('click', deleteTwoAnswer);
 };
 
 function upWiningColumn() {
-  let winCount = 15 - count;
-  console.dir(costWiningColumn.childNodes[winCount].classList.add('costWinRed'));
+  let winCountMin = costWiningColumn.childNodes.length - count;
+  costWiningColumn.childNodes[winCountMin].classList.add('costWinRed');
+  console.dir(costWiningColumn.childNodes[winCountMin]);
+
+  costWiningColumn.childNodes.forEach(item=> {
+    if(item.className == 'costWinning-item costWinRed') {
+      console.log(item);
+    }
+  });
 }  
 
 getAnswer();
