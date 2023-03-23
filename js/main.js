@@ -4,6 +4,11 @@ const questionTitle = document.querySelector('.question-title'),
       questionHTMLList = document.querySelector('.question-list'),
       btn50 = document.querySelector('.bnt50');
 
+      import {costWiningColumn} from './costWinning.js';
+      import {expCostWiningColumn} from './costWinning.js';
+      import { questionsL} from './easyquestions.js';
+
+
 let count = 0;
 
 createQuestion();
@@ -28,6 +33,7 @@ function getAnswer() {
       console.log(questionsL[count].correctAnswer);
       alert('все верно');
       count++;
+      upWiningColumn();
       console.log(count);
       createQuestion();
     } else {
@@ -48,6 +54,10 @@ btn50.addEventListener('click', deleteTwoAnswer);
   });
 };
 
+function upWiningColumn() {
+  let winCount = 15 - count;
+  console.dir(costWiningColumn.childNodes[winCount].classList.add('costWinRed'));
+}  
 
 getAnswer();
 

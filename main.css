@@ -14,6 +14,10 @@
   outline: 2px solid red;
 }
 
-.number-list {
+.costWinning {
   list-style: none;
+}
+
+.costWinRed {
+  background-color: red;
 }

@@ -1,4 +1,4 @@
-const questionsL = [
+export const questionsL = [
   {
     question: 'Сколько лап у кота?',
     answers: [1, 3, 4, 7],
