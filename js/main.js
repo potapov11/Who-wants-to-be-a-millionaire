@@ -22,7 +22,9 @@ function createQuestion() {
   });
 }
 
-
+// function classAdd() {
+//   e.target.classList.add('correctAnswer');
+// }
 
 function getAnswer() {
 
@@ -30,12 +32,18 @@ function getAnswer() {
     console.log('есть клик');
     if(e.target.tagName !== 'LI') return;
     if(e.target.textContent == questionsL[count].correctAnswer) { //Если ответ правильный
-      e.target.classList.add('correctAnswer');
+      // e.target.classList.add('correctAnswer');
+
+      function classAdd() {
+        e.target.classList.add('correctAnswer');
+      }
+      setTimeout(classAdd, 1000);
 
       console.log(questionsL[count].correctAnswer);
 
       // alert('все верно');
-      upWiningColumn();
+      // upWiningColumn();
+      setTimeout(upWiningColumn, 1200);
       count++;
       // console.log(count);
       setTimeout(createQuestion, 2000)
