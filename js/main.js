@@ -56,9 +56,9 @@ btn50.addEventListener('click', deleteTwoAnswer);
 
 function upWiningColumn() {
   console.log(count);
-  costWiningColumn.childNodes[count].classList.add('costWinRed');
+  costWiningColumn.childNodes[count].classList.add('costWinGold');
   if(costWiningColumn.childNodes[count-1]) {
-    costWiningColumn.childNodes[count-1].classList.remove('costWinRed');
+    costWiningColumn.childNodes[count-1].classList.remove('costWinGold');
   }
 }  
 

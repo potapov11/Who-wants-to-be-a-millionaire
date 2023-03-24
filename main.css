@@ -72,12 +72,14 @@
 }
 
 .container {
+  position: relative;
   width: 50%;
   margin: 0 auto;
   text-align: center;
 }
 
 .question-item {
+  color: white;
   list-style: none;
   text-align: left;
   margin-bottom: 10px;
@@ -85,12 +87,26 @@
   outline: 2px solid red;
 }
 
+.question-title {
+  color: white;
+}
+
 .costWinning {
+  position: absolute;
+  right: -80px;
+  top: 135px;
   display: flex;
   flex-direction: column-reverse;
   list-style: none;
 }
 
-.costWinRed {
-  background-color: red;
+.costWinning-item {
+  margin-bottom: 3px;
+  text-align: left;
+  width: 70px;
+  color: #F4952E;
+}
+
+.costWinGold {
+  background: linear-gradient(180deg, #FAD448 0%, #F38D2A 100%);
 }
