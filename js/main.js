@@ -38,7 +38,8 @@ function getAnswer() {
       upWiningColumn();
       count++;
       // console.log(count);
-      createQuestion();
+      setTimeout(createQuestion, 2000)
+      // createQuestion();
     } else {
       alert('попробуй еще раз');
     }
