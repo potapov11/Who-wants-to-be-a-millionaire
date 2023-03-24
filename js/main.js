@@ -39,19 +39,19 @@ function getAnswer() {
       }
       setTimeout(classAdd, 1000);
 
-      console.log(questionsL[count].correctAnswer);
-
-      // alert('все верно');
-      // upWiningColumn();
       setTimeout(upWiningColumn, 1200);
-      count++;
-      // console.log(count);
-      setTimeout(createQuestion, 2000)
-      // createQuestion();
-    } else {
-      alert('попробуй еще раз');
-    }
 
+      setTimeout(function(){
+        count++;
+      }, 1300);
+
+      setTimeout(createQuestion, 2000);
+
+    } else {
+      e.target.classList.add('incorrectAnswer');
+      // return;
+    }
+    // createQuestion();
   });
 }
 
@@ -67,8 +67,12 @@ btn50.addEventListener('click', deleteTwoAnswer);
 };
 
 function upWiningColumn() {
+  costWiningColumn.childNodes.forEach((item, i)=> {
+    console.log(item, i);
+  });
   console.log(count);
   costWiningColumn.childNodes[count].classList.add('costWinGold');
+  console.log(costWiningColumn.childNodes[count], count);
   if(costWiningColumn.childNodes[count-1]) {
     costWiningColumn.childNodes[count-1].classList.remove('costWinGold');
   }

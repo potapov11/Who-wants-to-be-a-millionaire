@@ -35,6 +35,7 @@
   top: 48px;  
   background: radial-gradient(67.01% 9609.94% at 50.1% 77.5%, #164F7F 40%, #658AA5 79.01%, rgba(17, 17, 17, 0) 100%, #008AFF 100%);
   border-radius: 30px;
+  cursor: pointer;
 }
 
 .tipAll:first-child {
@@ -80,36 +81,38 @@
 
 .question-item {
   width: 335px;
+  height: 30px;
   color: white;
   padding-left: 10px;
   padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   list-style: none;
   text-align: left;
-  margin-bottom: 10px;
-  height: 20px;
+  cursor: pointer;
 }
 
 .question-item:first-child{
   position: absolute;
-  top: 136px;
+  top: 133px;
   left: 198px;
 }
 
 .question-item:nth-child(2) {
   position: absolute;
-  top: 136px;
+  top: 133px;
   right: 210px;
 }
 
 .question-item:nth-child(3) {
   position: absolute;
-  top: 190px;
+  top: 185px;
   left: 198px;
 }
 
 .question-item:last-child{
   position: absolute;
-  top: 190px;
+  top: 185px;
   right: 210px;
 }
 
@@ -131,11 +134,13 @@
 }
 
 .costWinning-item {
+  width: 80px;
   margin-bottom: 3px;
+  padding-left: 5px;
   text-align: left;
-  width: 70px;
   color: #F4952E;
   font-size: 18px;
+  border-radius: 5px;
 }
 
 .costWinGold {
@@ -145,7 +150,12 @@
 
 .correctAnswer {
   background: radial-gradient(67.01% 9609.94% at 50.1% 77.5%, #FFC900 0%, #F38D2A 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
-border-radius: 24px;
+  border-radius: 24px;
+}
+
+.incorrectAnswer {
+  background-color: red;
+  border-radius: 24px;
 }
 
 .game-box {
