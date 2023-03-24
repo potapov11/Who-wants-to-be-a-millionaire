@@ -98,7 +98,7 @@
 .question-item:nth-child(2) {
   position: absolute;
   top: 136px;
-  right: 200px;
+  right: 210px;
 }
 
 .question-item:nth-child(3) {
@@ -110,7 +110,7 @@
 .question-item:last-child{
   position: absolute;
   top: 190px;
-  right: 200px;
+  right: 210px;
 }
 
 .question-title {
@@ -135,11 +135,17 @@
   text-align: left;
   width: 70px;
   color: #F4952E;
+  font-size: 18px;
 }
 
 .costWinGold {
   background: linear-gradient(180deg, #FAD448 0%, #F38D2A 100%);
   color: black;
+}
+
+.correctAnswer {
+  background: radial-gradient(67.01% 9609.94% at 50.1% 77.5%, #FFC900 0%, #F38D2A 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+border-radius: 24px;
 }
 
 .game-box {
@@ -148,4 +154,3 @@
   height: 273px;
   background-image: url(img/questBckg.png);
 }
-

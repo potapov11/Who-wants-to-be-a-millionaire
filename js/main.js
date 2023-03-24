@@ -30,8 +30,11 @@ function getAnswer() {
     console.log('есть клик');
     if(e.target.tagName !== 'LI') return;
     if(e.target.textContent == questionsL[count].correctAnswer) { //Если ответ правильный
+      e.target.classList.add('correctAnswer');
+
       console.log(questionsL[count].correctAnswer);
-      alert('все верно');
+
+      // alert('все верно');
       upWiningColumn();
       count++;
       // console.log(count);
