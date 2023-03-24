@@ -1,6 +1,77 @@
-.container {
+* {
+  box-sizing: border-box;
+}
+
+.body-page {
+  min-height: 100%;
+  padding: 0;
+  margin: 0;
+  background: url('img/bckg.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.logo-img {
+  margin: 0 auto;
+  margin-top: 15px;
+  width: 434px;
+  height: 434px;
+  background: url('img/centr-logo-bkcg.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.tips {
   display: flex;
-  flex-direction: column-reverse;
+  justify-content: center;
+  margin: 40px auto;
+  width: 283px;
+}
+
+.tipAll {
+  width: 66px;
+  height: 47px;
+  left: 802px;
+  top: 48px;  
+  background: radial-gradient(67.01% 9609.94% at 50.1% 77.5%, #164F7F 40%, #658AA5 79.01%, rgba(17, 17, 17, 0) 100%, #008AFF 100%);
+  border-radius: 30px;
+}
+
+.tipAll:first-child {
+  margin-right: 15px;
+}
+.tipAll:last-child {
+  margin-left: 15px;
+}
+
+.span-tips__50 {
+  display: block;
+  width: 51px;
+  height: 14px;
+  background-image: url('img/50_50.png');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.span-pollAudience {
+  display: block;
+  width: 51px;
+  height: 30px;
+  background-image: url('img/pollaud.png');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.span-callFriend {
+  display: block;
+  width: 51px;
+  height: 33px;
+  background-image: url('img/tipsphone.png');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.container {
   width: 50%;
   margin: 0 auto;
   text-align: center;

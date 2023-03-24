@@ -2,7 +2,7 @@
 
 const questionTitle = document.querySelector('.question-title'),
       questionHTMLList = document.querySelector('.question-list'),
-      btn50 = document.querySelector('.bnt50');
+      btn50 = document.querySelector('.tips__50');
 
       import {costWiningColumn} from './costWinning.js';
       import {expCostWiningColumn} from './costWinning.js';
@@ -63,5 +63,3 @@ function upWiningColumn() {
 }  
 
 getAnswer();
-
-
