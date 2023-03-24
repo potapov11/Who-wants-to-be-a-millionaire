@@ -7,8 +7,8 @@
   padding: 0;
   margin: 0;
   background: url('img/bckg.png');
-  background-size: cover;
   background-repeat: no-repeat;
+  background-color: #040C15;;
 }
 
 .logo-img {
@@ -79,16 +79,46 @@
 }
 
 .question-item {
+  width: 335px;
   color: white;
+  padding-left: 10px;
+  padding-right: 10px;
   list-style: none;
   text-align: left;
   margin-bottom: 10px;
   height: 20px;
-  outline: 2px solid red;
+}
+
+.question-item:first-child{
+  position: absolute;
+  top: 136px;
+  left: 198px;
+}
+
+.question-item:nth-child(2) {
+  position: absolute;
+  top: 136px;
+  right: 200px;
+}
+
+.question-item:nth-child(3) {
+  position: absolute;
+  top: 190px;
+  left: 198px;
+}
+
+.question-item:last-child{
+  position: absolute;
+  top: 190px;
+  right: 200px;
 }
 
 .question-title {
   color: white;
+  margin: 0;
+  position: absolute;
+  top: 45px;
+  left: 38%;
 }
 
 .costWinning {
@@ -109,4 +139,13 @@
 
 .costWinGold {
   background: linear-gradient(180deg, #FAD448 0%, #F38D2A 100%);
+  color: black;
 }
+
+.game-box {
+  position: relative;
+  width: 1135px;
+  height: 273px;
+  background-image: url(img/questBckg.png);
+}
+
