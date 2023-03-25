@@ -13,30 +13,30 @@ let count = 0;
 
 createQuestion();
 
+getAnswer();
+
 function createQuestion() {
+
   questionTitle.innerHTML = '';
   questionHTMLList.innerHTML = '';
   questionTitle.innerHTML = questionsL[count].question;
   questionsL[count].answers.forEach(item => {
     questionHTMLList.innerHTML += `<li class="question-item">${item}</li>`;
   });
-}
 
-// function classAdd() {
-//   e.target.classList.add('correctAnswer');
-// }
+}
 
 function getAnswer() {
 
   questionHTMLList.addEventListener('click', (e) => {
-    console.log('есть клик');
     if(e.target.tagName !== 'LI') return;
-    if(e.target.textContent == questionsL[count].correctAnswer) { //Если ответ правильный
-      // e.target.classList.add('correctAnswer');
+
+    if(e.target.textContent == questionsL[count].correctAnswer) { 
 
       function classAdd() {
         e.target.classList.add('correctAnswer');
       }
+
       setTimeout(classAdd, 1000);
 
       setTimeout(upWiningColumn, 1200);
@@ -49,11 +49,12 @@ function getAnswer() {
 
     } else {
       e.target.classList.add('incorrectAnswer');
-      // return;
-    }
-    // createQuestion();
+      createQuestion();
+      }    
   });
 }
+
+createQuestion();
 
 btn50.addEventListener('click', deleteTwoAnswer);
 
@@ -64,18 +65,16 @@ btn50.addEventListener('click', deleteTwoAnswer);
       item.textContent = '';
     }
   });
+
 };
 
 function upWiningColumn() {
   costWiningColumn.childNodes.forEach((item, i)=> {
-    console.log(item, i);
   });
-  console.log(count);
+
   costWiningColumn.childNodes[count].classList.add('costWinGold');
-  console.log(costWiningColumn.childNodes[count], count);
+
   if(costWiningColumn.childNodes[count-1]) {
     costWiningColumn.childNodes[count-1].classList.remove('costWinGold');
   }
 }  
-
-getAnswer();
