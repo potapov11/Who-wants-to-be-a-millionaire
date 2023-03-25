@@ -21,9 +21,10 @@ function createQuestion() {
   questionHTMLList.innerHTML = '';
   questionTitle.innerHTML = questionsL[count].question;
   questionsL[count].answers.forEach(item => {
-    questionHTMLList.innerHTML += `<li class="question-item">${item}</li>`;
+  questionHTMLList.innerHTML += `<li class="question-item">${item}</li>`;
   });
-
+  console.log('1');
+  console.log(count);
 }
 
 function getAnswer() {
@@ -49,12 +50,16 @@ function getAnswer() {
 
     } else {
       e.target.classList.add('incorrectAnswer');
-      createQuestion();
-      }    
+      setTimeout(function(){
+        count++;
+      }, 1300);
+      setTimeout(createQuestion, 2000);
+      // createQuestion();
+      }  
+    // }  
   });
 }
 
-createQuestion();
 
 btn50.addEventListener('click', deleteTwoAnswer);
 
