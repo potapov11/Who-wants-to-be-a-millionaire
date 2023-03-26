@@ -117,11 +117,12 @@
 }
 
 .question-title {
-  color: white;
+  width: 700px;
   margin: 0;
   position: absolute;
-  top: 45px;
-  left: 38%;
+  top: 41px;
+  left: 18%;
+  color: white;
 }
 
 .costWinning {

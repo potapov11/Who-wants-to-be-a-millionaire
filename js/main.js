@@ -7,33 +7,67 @@ const questionTitle = document.querySelector('.question-title'),
       import {costWiningColumn} from './costWinning.js';
       import {expCostWiningColumn} from './costWinning.js';
       import { questionsL} from './easyquestions.js';
+      import { questionRandItem} from './easyquestions.js'; //Случайный элемент массива
+      import { questionRandItemHeavy} from './heavyquestion.js'; //Случайный элемент массива
+      import { questionsHeavy} from './heavyquestion.js'; 
+      
+      console.log(questionRandItem);
+      // let questionRandItemPlus = questionRandItem;
+      let questionRandItemPlus = questionRandItem;
 
-
+      console.log(questionsHeavy[questionRandItemHeavy].question);
 let count = 0;
 let deleteTwoAnswerCount = 0;
-
 createQuestion();
 
 getAnswer();
 
 function createQuestion() {
-
-  questionTitle.innerHTML = '';
-  questionHTMLList.innerHTML = '';
-  questionTitle.innerHTML = questionsL[count].question;
-  questionsL[count].answers.forEach(item => {
-  questionHTMLList.innerHTML += `<li class="question-item">${item}</li>`;
-  });
-  console.log('1');
   console.log(count);
+  if(count >= 5) {
+    questionRandItemPlus++;
+
+    questionTitle.innerHTML = '';
+    questionHTMLList.innerHTML = '';
+
+    questionTitle.innerHTML = questionsHeavy[questionRandItemHeavy].question;
+
+    questionsHeavy[questionRandItemHeavy].answers.forEach(item => {
+    questionHTMLList.innerHTML += `<li class="question-item">${item}</li>`;
+    });
+
+  } else {
+
+    questionRandItemPlus++;
+
+    questionTitle.innerHTML = '';
+    questionHTMLList.innerHTML = '';
+    questionTitle.innerHTML = questionsL[questionRandItemPlus].question;
+
+    questionsL[questionRandItemPlus].answers.forEach(item => {
+    questionHTMLList.innerHTML += `<li class="question-item">${item}</li>`;
+
+  });
+  }
+
+  // questionRandItemPlus++;
+
+  // questionTitle.innerHTML = '';
+  // questionHTMLList.innerHTML = '';
+
+  // questionTitle.innerHTML = questionsL[questionRandItemPlus].question;
+
+  // questionsL[questionRandItemPlus].answers.forEach(item => {
+
+  // questionHTMLList.innerHTML += `<li class="question-item">${item}</li>`;
+  // });
 }
 
 function getAnswer() {
 
   questionHTMLList.addEventListener('click', (e) => {
     if(e.target.tagName !== 'LI') return;
-
-    if(e.target.textContent == questionsL[count].correctAnswer) { 
+    if(e.target.textContent == questionsL[questionRandItemPlus].correctAnswer) { 
 
       function classAdd() {
         e.target.classList.add('correctAnswer');
@@ -82,7 +116,7 @@ btn50.addEventListener('click', deleteTwoAnswer);
 
       questionHTMLList.childNodes.forEach(item => {
         // console.log(item.textContent);
-        if(item.textContent == questionsL[count].incorrectAnswer[0] || item.textContent == questionsL[count].incorrectAnswer[1]) {
+        if(item.textContent == questionsL[questionRandItemPlus].incorrectAnswer[0] || item.textContent == questionsL[questionRandItemPlus].incorrectAnswer[1]) {
             item.textContent = '';
         } else {
           return;
