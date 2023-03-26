@@ -10,6 +10,7 @@ const questionTitle = document.querySelector('.question-title'),
 
 
 let count = 0;
+let deleteTwoAnswerCount = 0;
 
 createQuestion();
 
@@ -54,22 +55,40 @@ function getAnswer() {
         count++;
       }, 1300);
       setTimeout(createQuestion, 2000);
-      // createQuestion();
       }  
     // }  
   });
 }
 
 
+// btn50.addEventListener('click', deleteTwoAnswer);
+
+//   function deleteTwoAnswer() { //50/50
+//   questionHTMLList.childNodes.forEach(item => {
+//     console.log(item.textContent);
+//     if(item.textContent == questionsL[count].incorrectAnswer[0] || item.textContent == questionsL[count].incorrectAnswer[1]) {
+//       item.textContent = '';
+//     }
+//   });
+
+// };
+
 btn50.addEventListener('click', deleteTwoAnswer);
 
   function deleteTwoAnswer() { //50/50
-  questionHTMLList.childNodes.forEach(item => {
-    console.log(item.textContent);
-    if(item.textContent == questionsL[count].incorrectAnswer[0] || item.textContent == questionsL[count].incorrectAnswer[1]) {
-      item.textContent = '';
+    deleteTwoAnswerCount++;
+    if(deleteTwoAnswerCount == 1) {
+      console.log(deleteTwoAnswerCount);
+
+      questionHTMLList.childNodes.forEach(item => {
+        // console.log(item.textContent);
+        if(item.textContent == questionsL[count].incorrectAnswer[0] || item.textContent == questionsL[count].incorrectAnswer[1]) {
+            item.textContent = '';
+        } else {
+          return;
+        }
+      });
     }
-  });
 
 };
 
