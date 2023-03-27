@@ -3,20 +3,22 @@
 const questionTitle = document.querySelector('.question-title'),
       questionHTMLList = document.querySelector('.question-list'),
       btn50 = document.querySelector('.tips__50');
+      const audio50 = document.getElementById('my-audio');
+
 
       import {costWiningColumn} from './costWinning.js';
       import {expCostWiningColumn} from './costWinning.js';
       import { questionsL} from './easyquestions.js';
       import { questionRandItem} from './easyquestions.js'; //Случайный элемент массива
-      import { questionRandItemHeavy} from './heavyquestion.js'; //Случайный элемент массива
       import { questionsHeavy} from './heavyquestion.js'; 
+      import { questionRandItemHeavy} from './heavyquestion.js'; //Случайный элемент массива
       
       console.log(questionRandItem);
-      // let questionRandItemPlus = questionRandItem;
       let questionRandItemPlus = questionRandItem;
+      let questionRandItemHeavyPlus = questionRandItemHeavy;
 
       console.log(questionsHeavy[questionRandItemHeavy].question);
-let count = 0;
+let count = 4;
 let deleteTwoAnswerCount = 0;
 createQuestion();
 
@@ -25,14 +27,15 @@ getAnswer();
 function createQuestion() {
   console.log(count);
   if(count >= 5) {
+    questionRandItemHeavyPlus++;
     questionRandItemPlus++;
 
     questionTitle.innerHTML = '';
     questionHTMLList.innerHTML = '';
 
-    questionTitle.innerHTML = questionsHeavy[questionRandItemHeavy].question;
+    questionTitle.innerHTML = questionsHeavy[questionRandItemHeavyPlus].question;
 
-    questionsHeavy[questionRandItemHeavy].answers.forEach(item => {
+    questionsHeavy[questionRandItemHeavyPlus].answers.forEach(item => {
     questionHTMLList.innerHTML += `<li class="question-item">${item}</li>`;
     });
 
@@ -67,7 +70,8 @@ function getAnswer() {
 
   questionHTMLList.addEventListener('click', (e) => {
     if(e.target.tagName !== 'LI') return;
-    if(e.target.textContent == questionsL[questionRandItemPlus].correctAnswer) { 
+    if(e.target.textContent == questionsL[questionRandItemPlus].correctAnswer || e.target.textContent == questionsHeavy[questionRandItemHeavyPlus].correctAnswer) { 
+      console.log(questionRandItemHeavyPlus);
 
       function classAdd() {
         e.target.classList.add('correctAnswer');
@@ -108,7 +112,8 @@ function getAnswer() {
 // };
 
 btn50.addEventListener('click', deleteTwoAnswer);
-
+btn50.addEventListener('click', playaudio50);
+  
   function deleteTwoAnswer() { //50/50
     deleteTwoAnswerCount++;
     if(deleteTwoAnswerCount == 1) {
@@ -136,3 +141,10 @@ function upWiningColumn() {
     costWiningColumn.childNodes[count-1].classList.remove('costWinGold');
   }
 }  
+
+//audio
+function playaudio50() {
+  audio50.play();
+}
+
+
