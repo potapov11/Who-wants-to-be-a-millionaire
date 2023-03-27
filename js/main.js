@@ -2,8 +2,13 @@
 
 const questionTitle = document.querySelector('.question-title'),
       questionHTMLList = document.querySelector('.question-list'),
-      btn50 = document.querySelector('.tips__50');
-      const audio50 = document.getElementById('my-audio');
+      btn50 = document.querySelector('.tips__50'),
+      audio50 = document.getElementById('my-audio'),
+      audioCall = document.getElementById('my-audiocall'),
+      btnCallFriend = document.querySelector('.callFriend'),
+      callFriendModal = document.querySelector('.callfriendmodal'),
+      callFriendInner= document.querySelector('.callfriendinner'),
+      closemodal = document.querySelector('.closemodal');
 
 
       import {costWiningColumn} from './costWinning.js';
@@ -13,13 +18,12 @@ const questionTitle = document.querySelector('.question-title'),
       import { questionsHeavy} from './heavyquestion.js'; 
       import { questionRandItemHeavy} from './heavyquestion.js'; //Случайный элемент массива
       
-      console.log(questionRandItem);
-      let questionRandItemPlus = questionRandItem;
-      let questionRandItemHeavyPlus = questionRandItemHeavy;
+let questionRandItemPlus = questionRandItem;
+let questionRandItemHeavyPlus = questionRandItemHeavy;
 
-      console.log(questionsHeavy[questionRandItemHeavy].question);
-let count = 4;
+let count = 0;
 let deleteTwoAnswerCount = 0;
+
 createQuestion();
 
 getAnswer();
@@ -52,18 +56,6 @@ function createQuestion() {
 
   });
   }
-
-  // questionRandItemPlus++;
-
-  // questionTitle.innerHTML = '';
-  // questionHTMLList.innerHTML = '';
-
-  // questionTitle.innerHTML = questionsL[questionRandItemPlus].question;
-
-  // questionsL[questionRandItemPlus].answers.forEach(item => {
-
-  // questionHTMLList.innerHTML += `<li class="question-item">${item}</li>`;
-  // });
 }
 
 function getAnswer() {
@@ -89,51 +81,82 @@ function getAnswer() {
 
     } else {
       e.target.classList.add('incorrectAnswer');
+      alert('Вы проиграли');
       setTimeout(function(){
-        count++;
-      }, 1300);
-      setTimeout(createQuestion, 2000);
+        location.reload();
+      }, 1000);
       }  
-    // }  
   });
 }
 
-
-// btn50.addEventListener('click', deleteTwoAnswer);
-
-//   function deleteTwoAnswer() { //50/50
-//   questionHTMLList.childNodes.forEach(item => {
-//     console.log(item.textContent);
-//     if(item.textContent == questionsL[count].incorrectAnswer[0] || item.textContent == questionsL[count].incorrectAnswer[1]) {
-//       item.textContent = '';
-//     }
-//   });
-
-// };
-
+//50 на 50
 btn50.addEventListener('click', deleteTwoAnswer);
-btn50.addEventListener('click', playaudio50);
+btn50.addEventListener('click', playAudio50, { once: true });
   
   function deleteTwoAnswer() { //50/50
+    btn50.classList.add('tipOpacity');
     deleteTwoAnswerCount++;
     if(deleteTwoAnswerCount == 1) {
       console.log(deleteTwoAnswerCount);
 
       questionHTMLList.childNodes.forEach(item => {
-        // console.log(item.textContent);
-        if(item.textContent == questionsL[questionRandItemPlus].incorrectAnswer[0] || item.textContent == questionsL[questionRandItemPlus].incorrectAnswer[1]) {
+        if(count>=5) {
+          if(item.textContent == questionsHeavy[questionRandItemHeavyPlus].incorrectAnswer[0] || item.textContent == questionsHeavy[questionRandItemHeavyPlus].incorrectAnswer[1]) {
             item.textContent = '';
-        } else {
-          return;
+          }
+        }       
+        if(count < 5) {
+          if(item.textContent == questionsL[questionRandItemPlus].incorrectAnswer[0] || item.textContent == questionsL[questionRandItemPlus].incorrectAnswer[1]) {
+            item.textContent = '';
+          }
         }
       });
     }
-
 };
+//--------//
+
+// Звонок другу
+
+btnCallFriend.addEventListener('click', showCallFriendModal, {once: true});
+function showCallFriendModal() {
+  // playAudioCall();
+
+  if(callFriendModal.classList.value == 'callfriendmodal hide') {
+    playAudioCall();
+  }
+
+  console.log(callFriendModal.classList.value);
+
+  callFriendModal.classList.toggle('show');
+  btnCallFriend.classList.add('tipOpacity');
+  if(count < 5) {
+    callFriendInner.innerHTML = '';
+    callFriendInner.innerHTML += `<h2 class = 'callmodaltitle'>Привет, подскажи ответ на это вопрос</h2>`;
+    callFriendInner.innerHTML += `<p class = 'callmodaltext'> ${questionTitle.innerHTML = questionsL[questionRandItemPlus].question}</p>`;
+
+  setTimeout(function(){
+    callFriendInner.innerHTML += `<p class = 'callmodaltext'>Думаю что ответ ${questionsL[questionRandItemPlus].correctAnswer}</p>`;
+  }, 1000);
+  } else {
+    callFriendInner.innerHTML = '';
+    callFriendInner.innerHTML += `<h2 class = 'callmodaltitle'>Привет, подскажи ответ на это вопрос</h2>`;
+    callFriendInner.innerHTML += `<p class = 'callmodaltext'> ${questionTitle.innerHTML = questionsHeavy[questionRandItemHeavyPlus].question}</p>`;
+
+    setTimeout(function(){
+      callFriendInner.innerHTML += `<p class = 'callmodaltext'>Думаю что ответ ${questionsHeavy[questionRandItemHeavyPlus].correctAnswer}</p>`;
+    }, 1000);
+  }
+}
+
+closemodal.addEventListener('click', function() {
+  callFriendModal.classList.toggle('show');
+  
+});
+
+//----------------//
+
 
 function upWiningColumn() {
-  costWiningColumn.childNodes.forEach((item, i)=> {
-  });
 
   costWiningColumn.childNodes[count].classList.add('costWinGold');
 
@@ -143,8 +166,11 @@ function upWiningColumn() {
 }  
 
 //audio
-function playaudio50() {
+function playAudio50() {
   audio50.play();
+}
+function playAudioCall() {
+  audioCall.play();
 }
 
 

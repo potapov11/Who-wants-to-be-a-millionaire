@@ -38,6 +38,10 @@
   cursor: pointer;
 }
 
+.tipOpacity {
+  opacity: 0.4;
+}
+
 .tipAll:first-child {
   margin-right: 15px;
 }
@@ -164,4 +168,24 @@
   width: 1135px;
   height: 273px;
   background-image: url(img/questBckg.png);
+}
+
+.callfriendmodal {
+  position: absolute;
+  top: 0;
+  width: 600px;
+  height: 400px;
+  background-color: #04090c;
+  border: 1px solid red;
+}
+
+.hide {
+  display: none;
+}
+.show {
+  display: block;
+}
+
+.callmodaltitle, .callmodaltext {
+  color: #ffffff;
 }
