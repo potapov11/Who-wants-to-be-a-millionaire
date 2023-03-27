@@ -119,7 +119,6 @@ btn50.addEventListener('click', playAudio50, { once: true });
 
 btnCallFriend.addEventListener('click', showCallFriendModal, {once: true});
 function showCallFriendModal() {
-  // playAudioCall();
 
   if(callFriendModal.classList.value == 'callfriendmodal hide') {
     playAudioCall();
@@ -130,28 +129,35 @@ function showCallFriendModal() {
   callFriendModal.classList.toggle('show');
   btnCallFriend.classList.add('tipOpacity');
   if(count < 5) {
-    callFriendInner.innerHTML = '';
-    callFriendInner.innerHTML += `<h2 class = 'callmodaltitle'>Привет, подскажи ответ на это вопрос</h2>`;
-    callFriendInner.innerHTML += `<p class = 'callmodaltext'> ${questionTitle.innerHTML = questionsL[questionRandItemPlus].question}</p>`;
 
-  setTimeout(function(){
-    callFriendInner.innerHTML += `<p class = 'callmodaltext'>Думаю что ответ ${questionsL[questionRandItemPlus].correctAnswer}</p>`;
-  }, 1000);
+    getTimeoutAnswer();
+
   } else {
-    callFriendInner.innerHTML = '';
-    callFriendInner.innerHTML += `<h2 class = 'callmodaltitle'>Привет, подскажи ответ на это вопрос</h2>`;
-    callFriendInner.innerHTML += `<p class = 'callmodaltext'> ${questionTitle.innerHTML = questionsHeavy[questionRandItemHeavyPlus].question}</p>`;
 
-    setTimeout(function(){
-      callFriendInner.innerHTML += `<p class = 'callmodaltext'>Думаю что ответ ${questionsHeavy[questionRandItemHeavyPlus].correctAnswer}</p>`;
-    }, 1000);
+    getTimeoutHeavyAnswer();
+
+
+    // callFriendInner.innerHTML = '';
+    // callFriendInner.innerHTML += `<h2 class = 'callmodaltitle'>Привет, подскажи ответ на это вопрос</h2>`;
+    // callFriendInner.innerHTML += `<p class = 'callmodaltext'> ${questionTitle.innerHTML = questionsHeavy[questionRandItemHeavyPlus].question}</p>`;
+
+    // setTimeout(function(){
+    //   callFriendInner.innerHTML += `<p class = 'callmodaltext'>Думаю что ответ ${questionsHeavy[questionRandItemHeavyPlus].correctAnswer}</p>`;
+    // }, 1000);
   }
 }
 
-closemodal.addEventListener('click', function() {
+closemodal.addEventListener('click', ()=> {
   callFriendModal.classList.toggle('show');
-  
+  console.log(callFriendModal.classList.value);
+
+  if(callFriendModal.classList.value == 'callfriendmodal hide') {
+    stopAudioPlay();
+  }
 });
+// closemodal.removeEventListener('click', showCallFriendModal, {once: true});
+
+
 
 //----------------//
 
@@ -169,8 +175,49 @@ function upWiningColumn() {
 function playAudio50() {
   audio50.play();
 }
+
 function playAudioCall() {
   audioCall.play();
 }
+function stopAudioPlay() {
+  audioCall.currentTime = 0;
+  audioCall.pause();
+  console.log('stopAudio');
+}
 
+//Отложенные действия в подсказке звонок другу
+
+function getTimeoutAnswer(){
+  setTimeout(()=>{
+    callFriendInner.innerHTML += `<h2 class = 'callmodaltitle'>Привет, подскажи ответ на это вопрос</h2>`;
+    console.log('1');
+  }, 1000);
+  setTimeout(()=>{
+    callFriendInner.innerHTML += `<p class = 'callmodaltext'> ${questionTitle.innerHTML = questionsL[questionRandItemPlus].question}</p>`;
+    console.log('2');
+  }, 3000);
+  setTimeout(function(){
+    callFriendInner.innerHTML += `<p class = 'callmodaltextanswer'>Это просто! Думаю что ответ ${questionsL[questionRandItemPlus].correctAnswer}</p>`;
+    console.log('3');
+  }, 7000);
+}
+
+function getTimeoutHeavyAnswer(){
+  setTimeout(()=>{
+    callFriendInner.innerHTML += `<h2 class = 'callmodaltitle'>Привет, подскажи ответ на это вопрос</h2>`;
+    console.log('1');
+  }, 1000);
+  setTimeout(()=>{
+    callFriendInner.innerHTML +=  `<p class = 'callmodaltext'> ${questionTitle.innerHTML = questionsHeavy[questionRandItemHeavyPlus].question}</p>`;
+    console.log('2');
+  }, 3000);
+  setTimeout(function(){
+    callFriendInner.innerHTML += `<p class = 'callmodaltext'>Надо подумать...</p>`
+    console.log('3');
+  }, 7000);
+  setTimeout(function(){
+    callFriendInner.innerHTML += `<p class = 'callmodaltextanswer'> Я конечно сомневаюсь, но попробую ответ ${questionsHeavy[questionRandItemHeavyPlus].correctAnswer}</p>`;
+    console.log('3');
+  }, 11000);
+}
 

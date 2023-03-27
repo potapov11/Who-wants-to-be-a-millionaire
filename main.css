@@ -124,9 +124,10 @@
   width: 700px;
   margin: 0;
   position: absolute;
-  top: 41px;
+  top: 45px;
   left: 18%;
   color: white;
+  font-weight: 500;
 }
 
 .costWinning {
@@ -168,15 +169,18 @@
   width: 1135px;
   height: 273px;
   background-image: url(img/questBckg.png);
+  font-family: sans-serif;
 }
 
 .callfriendmodal {
   position: absolute;
+  padding: 10px 20px;
   top: 0;
-  width: 600px;
-  height: 400px;
+  width: 626px;
+  height: 444px;
+  background-image: url('img/bckg-modal.png');
   background-color: #04090c;
-  border: 1px solid red;
+  background-repeat: no-repeat;
 }
 
 .hide {
@@ -186,6 +190,41 @@
   display: block;
 }
 
-.callmodaltitle, .callmodaltext {
+.callmodaltitle, .callmodaltext, .callmodaltextanswer, .calltitle {
+  margin: 0;
   color: #ffffff;
+  font-family: cursive;
+}
+
+.callmodaltitle {
+  margin: 0;
+  margin-top: 100px;
+  font-family: cursive;
+  font-size: 28px;
+}
+
+.callmodaltext {
+  margin-top: 60px;
+  font-size: 22px;
+}
+
+.callmodaltextanswer {
+  margin-top: 50px;
+  font-size: 22px;
+}
+
+.closemodal {
+  position: absolute;
+  bottom: 35px;
+  right: 26%;
+  width: 281px;
+  height: 41.04px;
+  background: linear-gradient(180deg, #FAD448 0%, #F38D2A 100%);
+  font-size: 20px;
+}
+
+.calltitle {
+  position: absolute;
+  top: 16px;
+  right: 42%;
 }
