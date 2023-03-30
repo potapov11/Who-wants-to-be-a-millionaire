@@ -213,7 +213,7 @@
   font-size: 22px;
 }
 
-.closemodal {
+.closemodal, .closemodalPoll {
   position: absolute;
   bottom: 35px;
   right: 26%;
@@ -227,4 +227,27 @@
   position: absolute;
   top: 16px;
   right: 42%;
+}
+
+.pollaudience {
+  position: absolute;
+  padding: 10px 20px;
+  top: 0;
+  width: 626px;
+  height: 444px;
+  background-image: url('img/bckg-modal.png');
+  background-color: #04090c;
+  background-repeat: no-repeat;
+}
+
+.pollAnswers {
+  display: flex;
+  justify-content: center;
+  margin-top: 255px;
+}
+
+.pollAnswertext {
+  margin-right: 20px;
+  color: #ffffff;
+  font-size: 24px;
 }

@@ -8,7 +8,11 @@ const questionTitle = document.querySelector('.question-title'),
       btnCallFriend = document.querySelector('.callFriend'),
       callFriendModal = document.querySelector('.callfriendmodal'),
       callFriendInner= document.querySelector('.callfriendinner'),
-      closemodal = document.querySelector('.closemodal');
+      closemodal = document.querySelector('.closemodal'),
+      tipPollAudience = document.querySelector('.pollAudience'),
+      pollAudienceModal = document.querySelector('.pollaudiencemodal'),
+      closemodalPoll = document.querySelector('.closemodalPoll'),
+      pollAnswers = document.querySelector('.pollAnswers');
 
 
       import {costWiningColumn} from './costWinning.js';
@@ -135,15 +139,6 @@ function showCallFriendModal() {
   } else {
 
     getTimeoutHeavyAnswer();
-
-
-    // callFriendInner.innerHTML = '';
-    // callFriendInner.innerHTML += `<h2 class = 'callmodaltitle'>Привет, подскажи ответ на это вопрос</h2>`;
-    // callFriendInner.innerHTML += `<p class = 'callmodaltext'> ${questionTitle.innerHTML = questionsHeavy[questionRandItemHeavyPlus].question}</p>`;
-
-    // setTimeout(function(){
-    //   callFriendInner.innerHTML += `<p class = 'callmodaltext'>Думаю что ответ ${questionsHeavy[questionRandItemHeavyPlus].correctAnswer}</p>`;
-    // }, 1000);
   }
 }
 
@@ -155,8 +150,6 @@ closemodal.addEventListener('click', ()=> {
     stopAudioPlay();
   }
 });
-// closemodal.removeEventListener('click', showCallFriendModal, {once: true});
-
 
 
 //----------------//
@@ -220,4 +213,20 @@ function getTimeoutHeavyAnswer(){
     console.log('3');
   }, 11000);
 }
+//-------------------------------------------------//
 
+//Помощь зала
+tipPollAudience.addEventListener('click', getPollTip, {once: true});
+
+function getPollTip() {
+  pollAudienceModal.classList.toggle('show');
+  questionsL[questionRandItemPlus].answers.forEach(item=>{
+    pollAnswers.innerHTML+=`<p class='pollAnswertext'>${item}</p>`;
+    console.log('pollansw');
+  });
+}
+
+closemodalPoll.addEventListener('click', function(){
+  pollAudienceModal.classList.toggle('show');
+  console.log('pollclose');
+});
