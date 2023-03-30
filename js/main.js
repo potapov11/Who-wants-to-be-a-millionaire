@@ -221,7 +221,11 @@ tipPollAudience.addEventListener('click', getPollTip, {once: true});
 function getPollTip() {
   pollAudienceModal.classList.toggle('show');
   questionsL[questionRandItemPlus].answers.forEach(item=>{
-    pollAnswers.innerHTML+=`<p class='pollAnswertext'>${item}</p>`;
+    pollAnswers.innerHTML+=`
+    <div class = pollAnswercolumn>
+    <div class = pollcolorcolumn></div>
+    <p class='pollAnswertext'>${item}</p>
+    </div>`;
     console.log('pollansw');
   });
 }
