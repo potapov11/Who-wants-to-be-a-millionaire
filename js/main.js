@@ -26,7 +26,7 @@ const questionTitle = document.querySelector('.question-title'),
 let questionRandItemPlus = questionRandItem;
 let questionRandItemHeavyPlus = questionRandItemHeavy;
 
-let count = 5;
+let count = 0;
 let deleteTwoAnswerCount = 0;
 
 createQuestion();
