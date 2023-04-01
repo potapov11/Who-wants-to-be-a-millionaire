@@ -6,6 +6,7 @@ const questionTitle = document.querySelector('.question-title'),
       audio50 = document.getElementById('my-audio'),
       audioCall = document.getElementById('my-audiocall'),
       audioPoll = document.getElementById('my-audiopoll'),
+      audioBckg = document.getElementById('my-audiobckg'),
       btnCallFriend = document.querySelector('.callFriend'),
       callFriendModal = document.querySelector('.callfriendmodal'),
       callFriendInner= document.querySelector('.callfriendinner'),
@@ -13,7 +14,8 @@ const questionTitle = document.querySelector('.question-title'),
       tipPollAudience = document.querySelector('.pollAudience'),
       pollAudienceModal = document.querySelector('.pollaudiencemodal'),
       closemodalPoll = document.querySelector('.closemodalPoll'),
-      pollAnswers = document.querySelector('.pollAnswers');      
+      pollAnswers = document.querySelector('.pollAnswers'),
+      bckgMusicBtn = document.querySelector('.bckgMusic');       
 
 
       import {costWiningColumn} from './costWinning.js';
@@ -29,8 +31,8 @@ let questionRandItemHeavyPlus = questionRandItemHeavy;
 let count = 0;
 let deleteTwoAnswerCount = 0;
 
-createQuestion();
 
+createQuestion();
 getAnswer();
 
 function createQuestion() {
@@ -188,6 +190,30 @@ function stopAudioPlayPoll() {
   audioPoll.pause();
   console.log('stopAudio');
 }
+
+function playAudioBckg(){
+  audioBckg.play();
+}
+function stopAudioPlayBckg() {
+  audioBckg.currentTime = 0;
+  audioBckg.pause();
+}
+let isPlaying = true;
+bckgMusicBtn.addEventListener('click', function() {
+  if(isPlaying) {
+    playAudioBckg();
+    isPlaying = false;
+    console.log(`${isPlaying}`);
+    bckgMusicBtn.classList.toggle('bckgMusicStop');
+  } else {
+    stopAudioPlayBckg();
+    isPlaying = true;
+    console.log(`${isPlaying}`);
+    bckgMusicBtn.classList.remove('bckgMusicStop');
+  }
+});
+
+// bckgMusicBtn.removeEventListener('click', playAudioBckg);
 
 //Отложенные действия в подсказке звонок другу
 

@@ -278,3 +278,22 @@
 .polltitle {
   margin-top: 8px;
 }
+
+.bckgMusic {
+  position: absolute;
+  left: 0;
+  top: 125px;
+  background-color: #040C15;
+  width: 40px;
+  height: 40px;
+  background-image: url('img/icon-play.png');
+  background-repeat: no-repeat;
+  border: none;
+}
+
+.bckgMusicStop{
+  background-image: url('img/icon-stop.png');
+}
+.bckgMusicPlay{
+  background-image: url('img/icon-play.png');
+}
