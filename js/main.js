@@ -7,6 +7,8 @@ const questionTitle = document.querySelector('.question-title'),
       audioCall = document.getElementById('my-audiocall'),
       audioPoll = document.getElementById('my-audiopoll'),
       audioBckg = document.getElementById('my-audiobckg'),
+      audioCorrect = document.getElementById('my-audiocorrect'),
+      audioWrong = document.getElementById('my-audiowrong'),
       btnCallFriend = document.querySelector('.callFriend'),
       callFriendModal = document.querySelector('.callfriendmodal'),
       callFriendInner= document.querySelector('.callfriendinner'),
@@ -75,7 +77,7 @@ function getAnswer() {
       function classAdd() {
         e.target.classList.add('correctAnswer');
       }
-
+      playCorrect();
       setTimeout(classAdd, 1000);
 
       setTimeout(upWiningColumn, 1200);
@@ -88,7 +90,7 @@ function getAnswer() {
 
     } else {
       e.target.classList.add('incorrectAnswer');
-      alert('Вы проиграли');
+      playWrong();
       setTimeout(function(){
         location.reload();
       }, 1000);
@@ -198,6 +200,16 @@ function stopAudioPlayBckg() {
   audioBckg.currentTime = 0;
   audioBckg.pause();
 }
+
+function playCorrect(){
+  audioCorrect.play();
+}
+
+function playWrong(){
+  audioWrong.play();
+}
+
+//Кнопка включения аудио
 let isPlaying = true;
 bckgMusicBtn.addEventListener('click', function() {
   if(isPlaying) {
