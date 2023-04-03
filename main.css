@@ -407,6 +407,41 @@
     width: 500px;
   }
 
+  .callfriendmodal, .pollaudiencemodal {
+    width: 388px;
+    background-image: url('img/bckg-modal-min.png');
+    height: 270px;
+  }
+
+  .pollanswblock {
+    height: 100%;
+  }
+
+  .callmodaltitle {
+    margin: 0;
+    margin-top: 22px;
+    font-size: 18px;
+  }
+
+  .callmodaltextanswer{
+    margin-top: 11px;
+    font-size: 18px;
+}
+
+  .callmodaltext {
+    margin-top: 18px;
+    font-size: 18px;
+  }
+
+  .closemodal, .closemodalPoll{
+    bottom: 10px;
+    right: 15%;
+  }
+
+  .pollAnswers{
+    height: 70%;
+  }
+
   .costWinning{
     right: 20px;
   }
