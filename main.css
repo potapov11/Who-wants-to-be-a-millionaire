@@ -345,7 +345,7 @@ html{
 
 @media (max-width: 720px) {
   .game-box {
-    margin-top: 70px;
+    margin-top: 10px;
     background-image: url(img/bckg-min.png);
     background-repeat: no-repeat;
   }
@@ -392,7 +392,7 @@ html{
 }
 
 .logo-img {
-  margin-top: 80px;
+  margin-top: 20px;
   background-image: url('img/centr-logo-bkcg-min.png');
   width: 250px;
   height: 250px;
