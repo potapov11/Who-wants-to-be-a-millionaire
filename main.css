@@ -392,7 +392,7 @@ html{
 }
 
 .logo-img {
-  margin-top: 20px;
+  margin-top: 10px;
   background-image: url('img/centr-logo-bkcg-min.png');
   width: 250px;
   height: 250px;
@@ -478,7 +478,7 @@ html{
   }
 
   .tips {
-    margin: 20px auto;
+    margin: 10px auto;
   }
 
   .bckgMusic{
