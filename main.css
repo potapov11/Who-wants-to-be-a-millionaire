@@ -4,13 +4,18 @@
   box-sizing: border-box;
 }
 
+html{
+  overflow: hidden;
+}
+
 .body-page {
   min-height: 100vh;
   padding: 0;
   margin: 0;
   background: url('img/bckg.png');
   background-repeat: no-repeat;
-  background-color: #040C15;;
+  background-color: #040C15;
+  overflow: hidden;
 }
 
 .logo-img {
