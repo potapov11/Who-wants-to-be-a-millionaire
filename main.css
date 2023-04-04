@@ -477,6 +477,15 @@ html{
     width: 380px;
   }
 
+  .tips {
+    margin: 20px auto;
+  }
+
+  .bckgMusic{
+    top: 85px;
+    left: 50px;
+  }
+
   .costWinning{
     display: none;
     position: relative;
@@ -506,9 +515,9 @@ html{
   }
 
   .question-title {
-    top: 40px;
-    left: 28%;
-    width: 45%;
+    top: 36px;
+    left: 23%;
+    width: 58%;
   }
 }
 }
