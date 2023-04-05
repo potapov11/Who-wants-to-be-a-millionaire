@@ -102,6 +102,7 @@ html{
 .question-item {
   width: 50%;
   height: 45px;
+  margin-bottom: 10px;
   color: white;
   padding-left: 30px;
   padding-right: 10px;
@@ -114,30 +115,6 @@ html{
   text-align: left;
   cursor: pointer;
 }
-
-/* .question-item:first-child{
-  position: absolute;
-  top: 173px;
-  left: 198px;
-}
-
-.question-item:nth-child(2) {
-  position: absolute;
-  top: 173px;
-  right: 210px;
-}
-
-.question-item:nth-child(3) {
-  position: absolute;
-  top: 225px;
-  left: 198px;
-}
-
-.question-item:last-child{
-  position: absolute;
-  top: 225px;
-  right: 210px;
-} */
 
 .question-title {
   width: 65%;
@@ -196,7 +173,6 @@ html{
   height: 355px;
   padding-top: 30px;
   font-family: 'Open-sans', sans-serif;
-  outline: 1px solid red;
 }
 
 .callfriendmodal {
