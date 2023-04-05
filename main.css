@@ -107,25 +107,25 @@ html{
 
 .question-item:first-child{
   position: absolute;
-  top: 133px;
+  top: 173px;
   left: 198px;
 }
 
 .question-item:nth-child(2) {
   position: absolute;
-  top: 133px;
+  top: 173px;
   right: 210px;
 }
 
 .question-item:nth-child(3) {
   position: absolute;
-  top: 185px;
+  top: 225px;
   left: 198px;
 }
 
 .question-item:last-child{
   position: absolute;
-  top: 185px;
+  top: 225px;
   right: 210px;
 }
 
@@ -133,7 +133,7 @@ html{
   width: 60%;
   margin: 0;
   position: absolute;
-  top: 45px;
+  top: 85px;
   left: 18%;
   color: white;
   font-weight: 500;

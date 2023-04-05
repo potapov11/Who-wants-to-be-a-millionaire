@@ -20,17 +20,15 @@ const questionTitle = document.querySelector('.question-title'),
       bckgMusicBtn = document.querySelector('.bckgMusic');       
 
 
-      import {costWiningColumn} from './costWinning.js';
-      import {expCostWiningColumn} from './costWinning.js';
-      import { questionsL} from './easyquestions.js';
-      import { questionRandItem} from './easyquestions.js'; //Случайный элемент массива
-      import { questionsHeavy} from './heavyquestion.js'; 
-      import { questionRandItemHeavy} from './heavyquestion.js'; //Случайный элемент массива
+      import {costWiningColumn} from '../modules-js/costWinning.js';
+      import { questionsL, questionRandItem} from '../modules-js/easyquestions.js';
+      // import { questionsHeavy} from '../modules-js/heavyquestion.js'; 
+      import { questionRandItemHeavy, questionsHeavy} from '../modules-js/heavyquestion.js'; //Случайный элемент массива
       
 let questionRandItemPlus = questionRandItem;
 let questionRandItemHeavyPlus = questionRandItemHeavy;
 
-let count = 0;
+let count = 7;
 let deleteTwoAnswerCount = 0;
 
 
