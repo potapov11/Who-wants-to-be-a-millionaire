@@ -72,6 +72,7 @@ function getAnswer() {
       }
       playCorrect();
       setTimeout(classAdd, 1000);
+      setTimeout(playCorrect, 1000);
 
       setTimeout(upWiningColumn, 1200);
 

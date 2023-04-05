@@ -157,13 +157,19 @@ html{
 }
 
 .correctAnswer {
-  background: radial-gradient(67.01% 9609.94% at 50.1% 77.5%, #FFC900 0%, #F38D2A 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+  width: 50%;
+  height: 45px;
+  background: url('img/correctAnswBig.png');
+  background-repeat: no-repeat;
+  /* background: radial-gradient(67.01% 9609.94% at 50.1% 77.5%, #FFC900 0%, #F38D2A 100%) 350px 45px; warning: gradient uses a rotation that is not supported by CSS and may not behave as expected; */
   border-radius: 24px;
 }
 
 .incorrectAnswer {
-  background-color: #ff0000;
-  background-image: url('img/incorrectAnsw.png');
+  width: 50%;
+  height: 45px;
+  background-image: url('img/incorrectAnswBig.png');
+  background-repeat: no-repeat;
   border-radius: 24px;
 }
 
