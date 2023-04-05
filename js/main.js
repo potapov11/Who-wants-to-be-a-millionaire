@@ -58,7 +58,6 @@ function createQuestion() {
     questionsL[questionRandItemPlus].answers.forEach((item, index) => {
 
     questionHTMLList.innerHTML += `<li class="question-item"><span class=question-letter>${arrLet[index]}  </span>${item}</li>`;
-
   });
   }
 }
@@ -297,55 +296,93 @@ closemodalPoll.addEventListener('click', function(){
 });
 
 
+// function showEasyPollAnswers() {
+//   questionsL[questionRandItemPlus].answers.forEach(item=>{
+
+//     pollAnswers.innerHTML+=`
+//     <div class = pollAnswercolumn>
+//     <div class = pollcolorcolumn></div>
+//     <p class='pollAnswertext'>${item}</p>
+//     </div>`;    
+//   });
+
+//   const pollAnswertext = document.querySelectorAll('.pollAnswertext');
+//   console.log(pollAnswertext);
+//   pollAnswertext.forEach(itemText=>{
+//     if(typeof(questionsL[questionRandItemPlus].correctAnswer) == 'number') {
+//       questionsL[questionRandItemPlus].correctAnswer = String(questionsL[questionRandItemPlus].correctAnswer);
+//       console.log(typeof(questionsL[questionRandItemPlus].correctAnswer));
+//     }
+//     if(itemText.textContent === questionsL[questionRandItemPlus].correctAnswer) {
+//       itemText.previousElementSibling.style.cssText = `background-color: green; height: ${textHeight}%`;
+//     } else{
+//       getRandomNumLess60(10, 50);
+//       itemText.previousElementSibling.style.cssText = `background-color: red; height: ${textHeightMin}%`;
+//     }
+//   });
+// }
+
+
+
+
 function showEasyPollAnswers() {
-  questionsL[questionRandItemPlus].answers.forEach(item=>{
-
+  arrLet.forEach(arrLetItem=> {
     pollAnswers.innerHTML+=`
-    <div class = pollAnswercolumn>
-    <div class = pollcolorcolumn></div>
-    <p class='pollAnswertext'>${item}</p>
-    </div>`;    
-  });
-
+  //   <div class = pollAnswercolumn>
+  //   <div class = pollcolorcolumn></div>
+  //   <p class='pollAnswertext'>${arrLetItem}</p>
+  //   </div>`;
   const pollAnswertext = document.querySelectorAll('.pollAnswertext');
-  console.log(pollAnswertext);
-  pollAnswertext.forEach(itemText=>{
-    if(typeof(questionsL[questionRandItemPlus].correctAnswer) == 'number') {
-      questionsL[questionRandItemPlus].correctAnswer = String(questionsL[questionRandItemPlus].correctAnswer);
-      console.log(typeof(questionsL[questionRandItemPlus].correctAnswer));
-    }
-    if(itemText.textContent === questionsL[questionRandItemPlus].correctAnswer) {
-      itemText.previousElementSibling.style.cssText = `background-color: green; height: ${textHeight}%`;
+  pollAnswertext.forEach(textItem=> {
+    if(typeof(questionsL[questionRandItemPlus].correctPollAnswer) == 'number') {
+        questionsL[questionRandItemPlus].correctPollAnswer = String(questionsL[questionRandItemPlus].correctPollAnswer);
+        console.log(typeof(questionsL[questionRandItemPlus].correctPollAnswer));
+      }
+    if(questionsL[questionRandItemPlus].correctPollAnswer == textItem.innerText) {
+      console.dir(textItem);
+      textItem.previousElementSibling.style.cssText = `background-color: green; height: ${textHeight}%`;
     } else{
-      getRandomNumLess60(10, 50);
-      itemText.previousElementSibling.style.cssText = `background-color: red; height: ${textHeightMin}%`;
-    }
+          getRandomNumLess60(10, 50);
+          textItem.previousElementSibling.style.cssText = `background-color: red; height: ${textHeightMin}%`;
+        }
+  });  
   });
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
 function showHeavyPollAnswers() {
-  questionsHeavy[questionRandItemHeavyPlus].answers.forEach(item=>{
+  arrLet.forEach(arrLetItem=> {
 
     pollAnswers.innerHTML+=`
     <div class = pollAnswercolumn>
     <div class = pollcolorcolumn></div>
-    <p class='pollAnswertext'>${item}</p>
+    <p class='pollAnswertext'>${arrLetItem}</p>
     </div>`;    
   });
-  // questionsHeavy[questionRandItemHeavyPlus].question}
   const pollAnswertext = document.querySelectorAll('.pollAnswertext');
   console.log(pollAnswertext);
-  pollAnswertext.forEach(itemText=>{
-    if(typeof(questionsHeavy[questionRandItemHeavyPlus].correctAnswer) == 'number') {
-      questionsHeavy[questionRandItemHeavyPlus].correctAnswer = String(questionsHeavy[questionRandItemHeavyPlus].correctAnswer);
-      console.log(typeof(questionsHeavy[questionRandItemHeavyPlus].correctAnswer));
+  pollAnswertext.forEach(textItem=> {
+    if(typeof(questionsHeavy[questionRandItemHeavyPlus].correctPollAnswer) == 'number') {
+      questionsHeavy[questionRandItemHeavyPlus].correctPollAnswer = String(questionsHeavy[questionRandItemHeavyPlus].correctPollAnswer);
+      console.log(typeof(questionsHeavy[questionRandItemHeavyPlus].correctPollAnswer));
     }
     // console.log(item.textContent);
-    if(itemText.textContent === questionsHeavy[questionRandItemHeavyPlus].correctAnswer) {
-      itemText.previousElementSibling.style.cssText = `background-color: green; height: ${textHeight}%`;
+    if(textItem.textContent === questionsHeavy[questionRandItemHeavyPlus].correctPollAnswer) {
+      textItem.previousElementSibling.style.cssText = `background-color: green; height: ${textHeight}%`;
     } else{
       getRandomNumLess60(10, 50);
-      itemText.previousElementSibling.style.cssText = `background-color: red; height: ${textHeightMin}%`;
+      textItem.previousElementSibling.style.cssText = `background-color: red; height: ${textHeightMin}%`;
     }
   });
   console.log(questionRandItemHeavyPlus);
