@@ -17,26 +17,24 @@ const questionTitle = document.querySelector('.question-title'),
       pollAudienceModal = document.querySelector('.pollaudiencemodal'),
       closemodalPoll = document.querySelector('.closemodalPoll'),
       pollAnswers = document.querySelector('.pollAnswers'),
-      bckgMusicBtn = document.querySelector('.bckgMusic');       
-
-
+      bckgMusicBtn = document.querySelector('.bckgMusic'),  
+      arrLet = ['A', 'B', 'C', 'D'];
+    
       import {costWiningColumn} from '../modules-js/costWinning.js';
       import { questionsL, questionRandItem} from '../modules-js/easyquestions.js';
-      // import { questionsHeavy} from '../modules-js/heavyquestion.js'; 
       import { questionRandItemHeavy, questionsHeavy} from '../modules-js/heavyquestion.js'; //Случайный элемент массива
       
 let questionRandItemPlus = questionRandItem;
 let questionRandItemHeavyPlus = questionRandItemHeavy;
 
-let count = 7;
+let count = 0;
 let deleteTwoAnswerCount = 0;
-
 
 createQuestion();
 getAnswer();
 
+
 function createQuestion() {
-  console.log(count);
   if(count >= 5) {
     questionRandItemHeavyPlus++;
     questionRandItemPlus++;
@@ -46,10 +44,9 @@ function createQuestion() {
 
     questionTitle.innerHTML = questionsHeavy[questionRandItemHeavyPlus].question;
 
-    questionsHeavy[questionRandItemHeavyPlus].answers.forEach(item => {
-    questionHTMLList.innerHTML += `<li class="question-item">${item}</li>`;
-    });
-
+    questionsHeavy[questionRandItemHeavyPlus].answers.forEach((item, index) => {
+    questionHTMLList.innerHTML += `<li class="question-item"><span class=question-letter>${arrLet[index]}  </span>${item}</li>`;
+});
   } else {
 
     questionRandItemPlus++;
@@ -58,8 +55,9 @@ function createQuestion() {
     questionHTMLList.innerHTML = '';
     questionTitle.innerHTML = questionsL[questionRandItemPlus].question;
 
-    questionsL[questionRandItemPlus].answers.forEach(item => {
-    questionHTMLList.innerHTML += `<li class="question-item">${item}</li>`;
+    questionsL[questionRandItemPlus].answers.forEach((item, index) => {
+
+    questionHTMLList.innerHTML += `<li class="question-item"><span class=question-letter>${arrLet[index]}  </span>${item}</li>`;
 
   });
   }
@@ -68,10 +66,8 @@ function createQuestion() {
 function getAnswer() {
 
   questionHTMLList.addEventListener('click', (e) => {
-    if(e.target.tagName !== 'LI') return;
-    if(e.target.textContent == questionsL[questionRandItemPlus].correctAnswer || e.target.textContent == questionsHeavy[questionRandItemHeavyPlus].correctAnswer) { 
-      console.log(questionRandItemHeavyPlus);
-
+    if(e.target.lastChild.data == questionsL[questionRandItemPlus].correctAnswer || e.target.lastChild.data == questionsHeavy
+      [questionRandItemHeavyPlus].correctAnswer) { 
       function classAdd() {
         e.target.classList.add('correctAnswer');
       }
@@ -91,7 +87,7 @@ function getAnswer() {
       playWrong();
       setTimeout(function(){
         location.reload();
-      }, 1000);
+      }, 3000);
       }  
   });
 }
@@ -104,7 +100,6 @@ btn50.addEventListener('click', playAudio50, { once: true });
     btn50.classList.add('tipOpacity');
     deleteTwoAnswerCount++;
     if(deleteTwoAnswerCount == 1) {
-      console.log(deleteTwoAnswerCount);
 
       questionHTMLList.childNodes.forEach(item => {
         if(count>=5) {
@@ -131,8 +126,6 @@ function showCallFriendModal() {
     playAudioCall();
   }
 
-  console.log(callFriendModal.classList.value);
-
   callFriendModal.classList.toggle('show');
   btnCallFriend.classList.add('tipOpacity');
   if(count < 5) {
@@ -147,8 +140,6 @@ function showCallFriendModal() {
 
 closemodal.addEventListener('click', ()=> {
   callFriendModal.classList.toggle('show');
-  console.log(callFriendModal.classList.value);
-
   if(callFriendModal.classList.value == 'callfriendmodal hide') {
     stopAudioPlay();
   }
@@ -359,4 +350,3 @@ function showHeavyPollAnswers() {
   });
   console.log(questionRandItemHeavyPlus);
 }
-

@@ -253,3 +253,16 @@ export const questionsL = [
 
 
 export let questionRandItem = Math.floor(Math.random()*questionsL.length);
+
+
+// let numArr = [0,1,2];
+// let count = 0;
+
+// numArr.forEach(item=> {
+//   console.log(item, count);
+//   count++;
+// });
+// numArr.forEach(item=> {
+//   console.log(item, count);
+//   count++;
+// });
