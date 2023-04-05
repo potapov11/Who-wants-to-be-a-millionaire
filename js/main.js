@@ -295,36 +295,6 @@ closemodalPoll.addEventListener('click', function(){
   }
 });
 
-
-// function showEasyPollAnswers() {
-//   questionsL[questionRandItemPlus].answers.forEach(item=>{
-
-//     pollAnswers.innerHTML+=`
-//     <div class = pollAnswercolumn>
-//     <div class = pollcolorcolumn></div>
-//     <p class='pollAnswertext'>${item}</p>
-//     </div>`;    
-//   });
-
-//   const pollAnswertext = document.querySelectorAll('.pollAnswertext');
-//   console.log(pollAnswertext);
-//   pollAnswertext.forEach(itemText=>{
-//     if(typeof(questionsL[questionRandItemPlus].correctAnswer) == 'number') {
-//       questionsL[questionRandItemPlus].correctAnswer = String(questionsL[questionRandItemPlus].correctAnswer);
-//       console.log(typeof(questionsL[questionRandItemPlus].correctAnswer));
-//     }
-//     if(itemText.textContent === questionsL[questionRandItemPlus].correctAnswer) {
-//       itemText.previousElementSibling.style.cssText = `background-color: green; height: ${textHeight}%`;
-//     } else{
-//       getRandomNumLess60(10, 50);
-//       itemText.previousElementSibling.style.cssText = `background-color: red; height: ${textHeightMin}%`;
-//     }
-//   });
-// }
-
-
-
-
 function showEasyPollAnswers() {
   arrLet.forEach(arrLetItem=> {
     pollAnswers.innerHTML+=`
@@ -348,18 +318,6 @@ function showEasyPollAnswers() {
   });  
   });
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 function showHeavyPollAnswers() {
   arrLet.forEach(arrLetItem=> {

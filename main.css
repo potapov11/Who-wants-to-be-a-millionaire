@@ -92,20 +92,30 @@ html{
   overflow: hidden;
 }
 
+.question-list {
+  width: 65%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .question-item {
-  width: 335px;
-  height: 30px;
+  width: 50%;
+  height: 45px;
   color: white;
-  padding-left: 10px;
+  padding-left: 30px;
   padding-right: 10px;
-  padding-top: 5px;
+  padding-top: 10px;
   padding-bottom: 5px;
+  background-image: url('img/answBtn.png');
+  background-repeat: no-repeat;
+  background-size: contain;
   list-style: none;
   text-align: left;
   cursor: pointer;
 }
 
-.question-item:first-child{
+/* .question-item:first-child{
   position: absolute;
   top: 173px;
   left: 198px;
@@ -127,16 +137,22 @@ html{
   position: absolute;
   top: 225px;
   right: 210px;
-}
+} */
 
 .question-title {
-  width: 60%;
-  margin: 0;
-  position: absolute;
-  top: 85px;
-  left: 18%;
+  width: 65%;
+  height: 100px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 25px;
+  padding-bottom: 20px;
   color: white;
   font-weight: 500;
+  background-image: url('img/titleBtn.png');
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 .costWinning {
@@ -169,7 +185,8 @@ html{
 }
 
 .incorrectAnswer {
-  background-color: red;
+  background-color: #ff0000;
+  background-image: url('img/incorrectAnsw.png');
   border-radius: 24px;
 }
 
@@ -177,11 +194,9 @@ html{
   position: relative;
   width: 100%;
   height: 355px;
-  background-image: url(img/questBckg.png);
-  background-size: contain;
-  background-position: center center;
-  background-repeat: no-repeat;
-  font-family: sans-serif;
+  padding-top: 30px;
+  font-family: 'Open-sans', sans-serif;
+  outline: 1px solid red;
 }
 
 .callfriendmodal {
@@ -320,8 +335,9 @@ html{
     width: 900px;
   }
 
-  .question-title {
-    padding: 10px;
+  .question-title{
+    padding-top: 20px;
+    font-size: 20px;
   }
 
   .question-item:first-child{
@@ -343,73 +359,16 @@ html{
 }
 
 
-@media (max-width: 720px) {
-  .game-box {
-    margin-top: 10px;
-    background-image: url(img/bckg-min.png);
-    background-repeat: no-repeat;
-  }
-
-  .container {
-    width: 600px;
-  }
-
-  .question-title{
-    top: 25px;
-    left: 32%;
-    width: 37%;
-    padding: 0;
-    font-weight: 500;
-    font-size: 18px;
-  }
-
-  .question-item {
-    width: 176px;
-  }
-
-.question-item {
-  text-align: center;
-}
-
-  .question-item:first-child {
-    top: 160px;
-    left: 36%;
-}
-
-.question-item:nth-child(2) {
-  top: 205px;
-  left: 36%;
-}
-
-.question-item:nth-child(3) {
-  top: 250px;
-  left: 36%;
-}
-
-.question-item:last-child {
-  top: 295px;
-  left: 36%;
-}
-
-.logo-img {
-  margin-top: 10px;
-  background-image: url('img/centr-logo-bkcg-min.png');
-  width: 250px;
-  height: 250px;
-}
-
-.bckgMusic {
-  left: 70px;
-}
-
-.costWinning {
-  right: 50px;
-  top: 16px;
-}
-
-@media (max-width: 700px){
+@media (max-width: 770px){
   .container{
     width: 500px;
+  }
+
+  .logo-img {
+    margin-top: 10px;
+    background-image: url('img/centr-logo-bkcg-min.png');
+    width: 250px;
+    height: 250px;
   }
 
   .callfriendmodal, .pollaudiencemodal {
@@ -450,26 +409,46 @@ html{
   .costWinning{
     right: 20px;
   }
-
-  .question-item:first-child {
-    width: 47%;
-    left: 27%;
 }
 
-  .question-item:nth-child(2) {
-    width: 47%;
-    left: 27%;
+
+@media (max-width: 720px) {
+
+  .question-item {
+    width: 176px;
   }
 
-  .question-item:nth-child(3) {
-    width: 47%;
-    left: 27%;
-  }
+.question-item {
+  text-align: center;
+}
 
-  .question-item:last-child {
-    width: 47%;
-    left: 27%;
-  }
+  .question-item:first-child {
+    top: 160px;
+    left: 36%;
+}
+
+.question-item:nth-child(2) {
+  top: 205px;
+  left: 36%;
+}
+
+.question-item:nth-child(3) {
+  top: 250px;
+  left: 36%;
+}
+
+.question-item:last-child {
+  top: 295px;
+  left: 36%;
+}
+
+.bckgMusic {
+  left: 70px;
+}
+
+.costWinning {
+  right: 50px;
+  top: 16px;
 }
 
 @media (max-width: 480px){
@@ -519,10 +498,10 @@ html{
     left: 22%;
   }
 
-  .question-title {
+  /* .question-title {
     top: 36px;
     left: 23%;
     width: 58%;
-  }
+  } */
 }
 }
