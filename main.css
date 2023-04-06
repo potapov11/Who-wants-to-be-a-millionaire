@@ -114,6 +114,7 @@ html{
   list-style: none;
   text-align: left;
   cursor: pointer;
+  webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 .question-title {
@@ -323,23 +324,6 @@ html{
     padding-top: 20px;
     font-size: 20px;
   }
-
-  .question-item:first-child{
-    left: 163px;
-  }
-
-  .question-item:nth-child(3){
-    top: 173px;
-    left: 163px;
-  }
-
-  .question-item:nth-child(2){
-    right: 100px;
-  }
-  .question-item:last-child{
-    top: 173px;
-    right: 100px;
-  }
 }
 
 
@@ -410,6 +394,7 @@ html{
 
   .costWinning{
     right: 20px;
+    top: 45px;
   }
 }
 
@@ -465,11 +450,22 @@ html{
     height: 200px;
   }
 
-  .costWinning{
-    display: none;
+  .costWinning {
+    width: 50px;
+    height: 50px;
+    /* display: none; */
     position: relative;
     right: 0;
+    top: 255px;
     align-items: center;
     width: 100%;
-  }
+}
+
+.costWinningBox {
+  width: 108px;
+  height: 50px;
+  outline: 1px solid red;
+  margin: 0 auto;
+  overflow: hidden;
+}
 }
