@@ -63,7 +63,7 @@ function createQuestion() {
 }
 
 function getAnswer() {
-
+  let x = 20;
   questionHTMLList.addEventListener('click', (e) => {
     if(e.target.lastChild.data == questionsL[questionRandItemPlus].correctAnswer || e.target.lastChild.data == questionsHeavy
       [questionRandItemHeavyPlus].correctAnswer) { 
@@ -71,8 +71,17 @@ function getAnswer() {
         e.target.classList.add('correctAnswer');
       }
       playCorrect();
+
+
+      
+
+
       setTimeout(classAdd, 1000);
       setTimeout(playCorrect, 1000);
+
+      costWiningColumn.style.cssText = `top: ${-15 + x}px; transition: top 1s;`
+      x+=24;
+
 
       setTimeout(upWiningColumn, 1200);
 
