@@ -72,10 +72,6 @@ function getAnswer() {
       }
       playCorrect();
 
-
-      
-
-
       setTimeout(classAdd, 1000);
       setTimeout(playCorrect, 1000);
 
@@ -106,18 +102,21 @@ btn50.addEventListener('click', deleteTwoAnswer);
 btn50.addEventListener('click', playAudio50, { once: true });
   
   function deleteTwoAnswer() { //50/50
+    
     btn50.classList.add('tipOpacity');
     deleteTwoAnswerCount++;
     if(deleteTwoAnswerCount == 1) {
 
       questionHTMLList.childNodes.forEach(item => {
+        console.dir(item);
         if(count>=5) {
-          if(item.textContent == questionsHeavy[questionRandItemHeavyPlus].incorrectAnswer[0] || item.textContent == questionsHeavy[questionRandItemHeavyPlus].incorrectAnswer[1]) {
+          if(item.innerText == questionsHeavy[questionRandItemHeavyPlus].incorrectAnswer[0] || item.innerText == questionsHeavy[questionRandItemHeavyPlus].incorrectAnswer[1]) {
             item.textContent = '';
           }
         }       
         if(count < 5) {
-          if(item.textContent == questionsL[questionRandItemPlus].incorrectAnswer[0] || item.textContent == questionsL[questionRandItemPlus].incorrectAnswer[1]) {
+          console.log(item.textContent);
+          if(item.innerText == questionsL[questionRandItemPlus].incorrectAnswer[0] || item.innerText == questionsL[questionRandItemPlus].incorrectAnswer[1]) {
             item.textContent = '';
           }
         }
