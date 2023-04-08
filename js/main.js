@@ -23,18 +23,23 @@ const questionTitle = document.querySelector('.question-title'),
       import {costWiningColumn} from '../modules-js/costWinning.js';
       import { questionsL, questionRandItem} from '../modules-js/easyquestions.js';
       import { questionRandItemHeavy, questionsHeavy} from '../modules-js/heavyquestion.js'; //Случайный элемент массива
-      
+
 let questionRandItemPlus = questionRandItem;
 let questionRandItemHeavyPlus = questionRandItemHeavy;
 
 let count = 0;
 let deleteTwoAnswerCount = 0;
 
+
+function removeDisabled(){
+  questionHTMLList.classList.remove('disabled');
+}
+
 createQuestion();
 getAnswer();
 
-
 function createQuestion() {
+  removeDisabled();
   if(count >= 5) {
     questionRandItemHeavyPlus++;
     questionRandItemPlus++;
@@ -65,18 +70,30 @@ function createQuestion() {
 function getAnswer() {
   let x = 20;
   questionHTMLList.addEventListener('click', (e) => {
+
     if(e.target.lastChild.data == questionsL[questionRandItemPlus].correctAnswer || e.target.lastChild.data == questionsHeavy
       [questionRandItemHeavyPlus].correctAnswer) { 
+      
+      console.log(e.target.lastChild);
+      console.log(e.target);
+      questionHTMLList.classList.add('disabled');
+      e.target.classList.add('disabled');
       function classAdd() {
         e.target.classList.add('correctAnswer');
       }
+
       playCorrect();
 
       setTimeout(classAdd, 1000);
-      setTimeout(playCorrect, 1000);
-
-      costWiningColumn.style.cssText = `top: ${-15 + x}px; transition: top 1s;`
-      x+=24;
+      
+      console.log(document.body.clientWidth);
+      function changeCostWiningColumn(arg){
+        if(document.body.clientWidth < 479) {
+          costWiningColumn.style.cssText = `top: ${-15 + x}px; transition: top 1s;`
+          x+=24;
+        }
+      }
+      changeCostWiningColumn(document.body.clientWidth);
 
 
       setTimeout(upWiningColumn, 1200);
@@ -85,8 +102,14 @@ function getAnswer() {
         count++;
       }, 1300);
 
-      setTimeout(createQuestion, 2000);
+      // function coverover () {
+      //   document.getElementById("overlay").style.display = "block";
+      //   setTimeout(createQuestion, 2000);
+      //   document.getElementById("overlay").style.display = "none";
+      // }
+      // coverover();
 
+      setTimeout(createQuestion, 2000);
     } else {
       e.target.classList.add('incorrectAnswer');
       playWrong();
