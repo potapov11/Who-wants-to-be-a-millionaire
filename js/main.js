@@ -73,9 +73,7 @@ function getAnswer() {
 
     if(e.target.lastChild.data == questionsL[questionRandItemPlus].correctAnswer || e.target.lastChild.data == questionsHeavy
       [questionRandItemHeavyPlus].correctAnswer) { 
-      
-      console.log(e.target.lastChild);
-      console.log(e.target);
+
       questionHTMLList.classList.add('disabled');
       e.target.classList.add('disabled');
       function classAdd() {
@@ -86,7 +84,6 @@ function getAnswer() {
 
       setTimeout(classAdd, 1000);
       
-      console.log(document.body.clientWidth);
       function changeCostWiningColumn(arg){
         if(document.body.clientWidth < 479) {
           costWiningColumn.style.cssText = `top: ${-15 + x}px; transition: top 1s;`
@@ -131,14 +128,12 @@ btn50.addEventListener('click', playAudio50, { once: true });
     if(deleteTwoAnswerCount == 1) {
 
       questionHTMLList.childNodes.forEach(item => {
-        console.dir(item);
         if(count>=5) {
           if(item.innerText == questionsHeavy[questionRandItemHeavyPlus].incorrectAnswer[0] || item.innerText == questionsHeavy[questionRandItemHeavyPlus].incorrectAnswer[1]) {
             item.textContent = '';
           }
         }       
         if(count < 5) {
-          console.log(item.textContent);
           if(item.innerText == questionsL[questionRandItemPlus].incorrectAnswer[0] || item.innerText == questionsL[questionRandItemPlus].incorrectAnswer[1]) {
             item.textContent = '';
           }
@@ -200,17 +195,14 @@ function playAudioCall() {
 function stopAudioPlay() {
   audioCall.currentTime = 0;
   audioCall.pause();
-  console.log('stopAudio');
 }
 
 function playAdioPoll(){
   audioPoll.play();
-  console.log('poll play');
 }
 function stopAudioPlayPoll() {
   audioPoll.currentTime = 0;
   audioPoll.pause();
-  console.log('stopAudio');
 }
 
 function playAudioBckg(){
@@ -235,51 +227,40 @@ bckgMusicBtn.addEventListener('click', function() {
   if(isPlaying) {
     playAudioBckg();
     isPlaying = false;
-    console.log(`${isPlaying}`);
     bckgMusicBtn.classList.toggle('bckgMusicStop');
   } else {
     stopAudioPlayBckg();
     isPlaying = true;
-    console.log(`${isPlaying}`);
     bckgMusicBtn.classList.remove('bckgMusicStop');
   }
 });
-
-// bckgMusicBtn.removeEventListener('click', playAudioBckg);
 
 //Отложенные действия в подсказке звонок другу
 
 function getTimeoutAnswer(){
   setTimeout(()=>{
     callFriendInner.innerHTML += `<h2 class = 'callmodaltitle'>Привет, подскажи ответ на это вопрос</h2>`;
-    console.log('1');
   }, 1000);
   setTimeout(()=>{
     callFriendInner.innerHTML += `<p class = 'callmodaltext'> ${questionTitle.innerHTML = questionsL[questionRandItemPlus].question}</p>`;
-    console.log('2');
   }, 3000);
   setTimeout(function(){
     callFriendInner.innerHTML += `<p class = 'callmodaltextanswer'>Это просто! Думаю что ответ ${questionsL[questionRandItemPlus].correctAnswer}</p>`;
-    console.log('3');
   }, 7000);
 }
 
 function getTimeoutHeavyAnswer(){
   setTimeout(()=>{
     callFriendInner.innerHTML += `<h2 class = 'callmodaltitle'>Привет, подскажи ответ на это вопрос</h2>`;
-    console.log('1');
   }, 1000);
   setTimeout(()=>{
     callFriendInner.innerHTML +=  `<p class = 'callmodaltext'> ${questionTitle.innerHTML = questionsHeavy[questionRandItemHeavyPlus].question}</p>`;
-    console.log('2');
   }, 3000);
   setTimeout(function(){
     callFriendInner.innerHTML += `<p class = 'callmodaltext'>Надо подумать...</p>`
-    console.log('3');
   }, 7000);
   setTimeout(function(){
     callFriendInner.innerHTML += `<p class = 'callmodaltextanswer'> Я конечно сомневаюсь, но попробую ответ ${questionsHeavy[questionRandItemHeavyPlus].correctAnswer}</p>`;
-    console.log('3');
   }, 11000);
 }
 //-------------------------------------------------//
@@ -303,7 +284,6 @@ tipPollAudience.addEventListener('click', getPollTip, {once: true});
 
 function getPollTip() {
   pollAudienceModal.classList.toggle('show');
-  console.log(pollAudienceModal.classList.value);
   if(pollAudienceModal.classList.value == 'pollaudiencemodal pollaudience hide show') {
     playAdioPoll();
   }
@@ -319,10 +299,8 @@ function getPollTip() {
 
 closemodalPoll.addEventListener('click', function(){
   pollAudienceModal.classList.toggle('show');
-  console.log(pollAudienceModal.classList.value);
 
   if(pollAudienceModal.classList.value == 'pollaudiencemodal pollaudience hide') {
-    console.log('stop play');
     stopAudioPlayPoll();
   }
 });
@@ -338,10 +316,8 @@ function showEasyPollAnswers() {
   pollAnswertext.forEach(textItem=> {
     if(typeof(questionsL[questionRandItemPlus].correctPollAnswer) == 'number') {
         questionsL[questionRandItemPlus].correctPollAnswer = String(questionsL[questionRandItemPlus].correctPollAnswer);
-        console.log(typeof(questionsL[questionRandItemPlus].correctPollAnswer));
       }
     if(questionsL[questionRandItemPlus].correctPollAnswer == textItem.innerText) {
-      console.dir(textItem);
       textItem.previousElementSibling.style.cssText = `background-color: green; height: ${textHeight}%`;
     } else{
           getRandomNumLess60(10, 50);
@@ -361,13 +337,10 @@ function showHeavyPollAnswers() {
     </div>`;    
   });
   const pollAnswertext = document.querySelectorAll('.pollAnswertext');
-  console.log(pollAnswertext);
   pollAnswertext.forEach(textItem=> {
     if(typeof(questionsHeavy[questionRandItemHeavyPlus].correctPollAnswer) == 'number') {
       questionsHeavy[questionRandItemHeavyPlus].correctPollAnswer = String(questionsHeavy[questionRandItemHeavyPlus].correctPollAnswer);
-      console.log(typeof(questionsHeavy[questionRandItemHeavyPlus].correctPollAnswer));
     }
-    // console.log(item.textContent);
     if(textItem.textContent === questionsHeavy[questionRandItemHeavyPlus].correctPollAnswer) {
       textItem.previousElementSibling.style.cssText = `background-color: green; height: ${textHeight}%`;
     } else{
@@ -375,5 +348,4 @@ function showHeavyPollAnswers() {
       textItem.previousElementSibling.style.cssText = `background-color: red; height: ${textHeightMin}%`;
     }
   });
-  console.log(questionRandItemHeavyPlus);
 }
