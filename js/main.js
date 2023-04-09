@@ -27,6 +27,7 @@ const questionTitle = document.querySelector('.question-title'),
 let questionRandItemPlus = questionRandItem;
 let questionRandItemHeavyPlus = questionRandItemHeavy;
 
+
 let count = 0;
 let deleteTwoAnswerCount = 0;
 
@@ -41,8 +42,18 @@ getAnswer();
 function createQuestion() {
   removeDisabled();
   if(count >= 5) {
-    questionRandItemHeavyPlus++;
-    questionRandItemPlus++;
+    // console.log(questionRandItemHeavyPlus);
+    // questionRandItemHeavyPlus++;
+    // console.log(questionRandItemHeavyPlus);
+    // console.log(questionsHeavy.length);
+
+    questionRandItemHeavyPlus = Math.floor(Math.random()*questionsHeavy.length);
+    console.log(questionRandItemHeavyPlus + ' ранд номер');
+    console.log(questionsHeavy.length + ' длина');
+    console.log(questionsHeavy);
+
+    questionsHeavy.splice(questionRandItemHeavyPlus - 1,1);
+    console.log(questionsHeavy.length + ' длина');
 
     questionTitle.innerHTML = '';
     questionHTMLList.innerHTML = '';
@@ -53,8 +64,15 @@ function createQuestion() {
     questionHTMLList.innerHTML += `<li class="question-item"><span class=question-letter>${arrLet[index]}  </span>${item}</li>`;
 });
   } else {
+    // console.log(questionRandItemPlus);
+    // questionRandItemPlus++;
+    // console.log(questionRandItemPlus);
+    // console.log(questionsL.length);
 
-    questionRandItemPlus++;
+    questionRandItemPlus = Math.floor(Math.random()*questionsL.length);
+    console.log(questionRandItemPlus);
+    questionsL.splice(questionRandItemPlus - 1,1);
+
 
     questionTitle.innerHTML = '';
     questionHTMLList.innerHTML = '';
@@ -70,6 +88,9 @@ function createQuestion() {
 function getAnswer() {
   let x = 20;
   questionHTMLList.addEventListener('click', (e) => {
+
+    console.log(questionsL[questionRandItemPlus].correctAnswer, questionsHeavy
+      [questionRandItemHeavyPlus].correctAnswer);
 
     if(e.target.lastChild.data == questionsL[questionRandItemPlus].correctAnswer || e.target.lastChild.data == questionsHeavy
       [questionRandItemHeavyPlus].correctAnswer) { 
@@ -98,13 +119,6 @@ function getAnswer() {
       setTimeout(function(){
         count++;
       }, 1300);
-
-      // function coverover () {
-      //   document.getElementById("overlay").style.display = "block";
-      //   setTimeout(createQuestion, 2000);
-      //   document.getElementById("overlay").style.display = "none";
-      // }
-      // coverover();
 
       setTimeout(createQuestion, 2000);
     } else {

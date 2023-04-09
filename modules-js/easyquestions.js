@@ -243,4 +243,4 @@ export const questionsL = [
 
 
 
-export let questionRandItem = Math.floor(Math.random()*questionsL.length);
+export let questionRandItem = Math.floor(Math.random()*questionsL.length - 6);

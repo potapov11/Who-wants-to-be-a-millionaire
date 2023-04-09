@@ -133,5 +133,8 @@ export const questionsHeavy = [
     incorrectAnswer: ['A Паллала', 'D Илиада']
   },
 ];
-console.log(questionsHeavy.length);
-export let questionRandItemHeavy = Math.floor(Math.random()*questionsHeavy.length);
+// console.log(questionsHeavy.length);
+// export let questionRandItemHeavy = Math.floor(Math.random()*questionsHeavy.length - 10);
+export let questionRandItemHeavy;
+questionRandItemHeavy = Math.floor(Math.random()*questionsHeavy.length);
+
