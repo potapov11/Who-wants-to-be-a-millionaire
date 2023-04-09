@@ -31,7 +31,6 @@ let questionRandItemHeavyPlus = questionRandItemHeavy;
 let count = 0;
 let deleteTwoAnswerCount = 0;
 
-
 function removeDisabled(){
   questionHTMLList.classList.remove('disabled');
 }
@@ -42,10 +41,6 @@ getAnswer();
 function createQuestion() {
   removeDisabled();
   if(count >= 5) {
-    // console.log(questionRandItemHeavyPlus);
-    // questionRandItemHeavyPlus++;
-    // console.log(questionRandItemHeavyPlus);
-    // console.log(questionsHeavy.length);
 
     questionRandItemHeavyPlus = Math.floor(Math.random()*questionsHeavy.length);
     console.log(questionRandItemHeavyPlus + ' ранд номер');
@@ -64,10 +59,6 @@ function createQuestion() {
     questionHTMLList.innerHTML += `<li class="question-item"><span class=question-letter>${arrLet[index]}  </span>${item}</li>`;
 });
   } else {
-    // console.log(questionRandItemPlus);
-    // questionRandItemPlus++;
-    // console.log(questionRandItemPlus);
-    // console.log(questionsL.length);
 
     questionRandItemPlus = Math.floor(Math.random()*questionsL.length);
     console.log(questionRandItemPlus);
@@ -119,6 +110,22 @@ function getAnswer() {
       setTimeout(function(){
         count++;
       }, 1300);
+
+
+
+      console.log(count + ' число');
+      // swohWinModal();
+
+      setTimeout(swohWinModal, 2000)
+      function swohWinModal() {
+        if(count == 14) {
+          const modalWin = document.querySelector('.modalWin');
+          const modalWinInner = modalWin.querySelector('.modalwininner');
+          modalWin.classList.add('show');
+          modalWinInner.classList.add('show');
+          modalWin.classList.add('zindex');
+        }
+      }
 
       setTimeout(createQuestion, 2000);
     } else {
