@@ -28,7 +28,7 @@ let questionRandItemPlus = questionRandItem;
 let questionRandItemHeavyPlus = questionRandItemHeavy;
 
 
-let count = 0;
+let count = 10;
 let deleteTwoAnswerCount = 0;
 
 function removeDisabled(){
@@ -116,14 +116,17 @@ function getAnswer() {
       console.log(count + ' число');
       // swohWinModal();
 
-      setTimeout(swohWinModal, 2000)
+      setTimeout(swohWinModal, 2000);
       function swohWinModal() {
         if(count == 14) {
           const modalWin = document.querySelector('.modalWin');
           const modalWinInner = modalWin.querySelector('.modalwininner');
+          const gameBox = document.querySelector('.game-box');
+          gameBox.classList.add('hide');
           modalWin.classList.add('show');
           modalWinInner.classList.add('show');
           modalWin.classList.add('zindex');
+          
         }
       }
 
