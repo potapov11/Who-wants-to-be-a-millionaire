@@ -23,6 +23,7 @@ const questionTitle = document.querySelector('.question-title'),
       import {costWiningColumn} from '../modules-js/costWinning.js';
       import { questionsL, questionRandItem} from '../modules-js/easyquestions.js';
       import { questionRandItemHeavy, questionsHeavy} from '../modules-js/heavyquestion.js'; //Случайный элемент массива
+      // import { createQuestion } from '../modules-js/create-question.js';
 
 let questionRandItemPlus = questionRandItem;
 let questionRandItemHeavyPlus = questionRandItemHeavy;
