@@ -8,10 +8,10 @@ export const questionsL = [
   },
   {
     question: 'Кто основал Петербург?',
-    answers: ['Петр 1', 'Иван Грозный', 'Владимир Путин', 'Джо Байден'],
+    answers: ['Петр 1', 'Иван Грозный', 'Владимир Ленин', 'Джон Леннон'],
     correctAnswer: 'Петр 1',
     correctPollAnswer: 'A',
-    incorrectAnswer: ['B Иван Грозный', 'D Джо Байден']
+    incorrectAnswer: ['B Иван Грозный', 'D Джон Леннон']
   },
   {
     question: 'Что Пётр I велел брить всем боярам и дворянам?',
@@ -204,10 +204,10 @@ export const questionsL = [
   },
   {
     question: 'Кто основал Петербург?',
-    answers: ['Петр 1', 'Иван Грозный', 'Владимир Путин', 'Джо Байден'],
+    answers: ['Петр 1', 'Иван Грозный', 'Владимир Ленин', 'Джон Леннон'],
     correctAnswer: 'Петр 1',
     correctPollAnswer: 'A',
-    incorrectAnswer: ['B Иван Грозный', 'D Джо Байден']
+    incorrectAnswer: ['B Иван Грозный', 'D Джон Леннон']
   },
   {
     question: 'Что Пётр I велел брить всем боярам и дворянам?',
