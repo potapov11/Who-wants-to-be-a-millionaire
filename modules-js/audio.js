@@ -1,3 +1,10 @@
+const audio50 = document.getElementById("my-audio"),
+  audioCall = document.getElementById("my-audiocall"),
+  audioPoll = document.getElementById("my-audiopoll"),
+  audioBckg = document.getElementById("my-audiobckg"),
+  audioCorrect = document.getElementById("my-audiocorrect"),
+  audioWrong = document.getElementById("my-audiowrong");
+
 const audio = {
   playAudio_50: function () {
     audio50.play();
@@ -35,3 +42,9 @@ const audio = {
 };
 
 export { audio };
+export { audio50 };
+export { audioCall };
+export { audioPoll };
+export { audioBckg };
+export { audioCorrect };
+export { audioWrong };

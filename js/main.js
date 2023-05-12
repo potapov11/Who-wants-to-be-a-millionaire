@@ -1,7 +1,15 @@
 "use strict";
 
 import { costWiningColumn } from "../modules-js/costWinning.js";
-import { audio } from "../modules-js/audio.js";
+import {
+  audio,
+  audio50,
+  audioCall,
+  audioPoll,
+  audioBckg,
+  audioCorrect,
+  audioWrong,
+} from "../modules-js/audio.js";
 import { questionsL, questionRandItem } from "../modules-js/easyquestions.js";
 import {
   questionRandItemHeavy,
@@ -11,12 +19,6 @@ import {
 const questionTitle = document.querySelector(".question-title"),
   questionHTMLList = document.querySelector(".question-list"),
   btn50 = document.querySelector(".tips__50"),
-  audio50 = document.getElementById("my-audio"),
-  audioCall = document.getElementById("my-audiocall"),
-  audioPoll = document.getElementById("my-audiopoll"),
-  audioBckg = document.getElementById("my-audiobckg"),
-  audioCorrect = document.getElementById("my-audiocorrect"),
-  audioWrong = document.getElementById("my-audiowrong"),
   btnCallFriend = document.querySelector(".callFriend"),
   callFriendModal = document.querySelector(".callfriendmodal"),
   callFriendInner = document.querySelector(".callfriendinner"),
@@ -143,7 +145,7 @@ function getAnswer() {
 
 //50 на 50
 btn50.addEventListener("click", deleteTwoAnswer);
-btn50.addEventListener("click", audio.playAudio50, { once: true });
+btn50.addEventListener("click", audio.playAudio_50, { once: true });
 
 function deleteTwoAnswer() {
   //50/50
@@ -181,7 +183,7 @@ function deleteTwoAnswer() {
 btnCallFriend.addEventListener("click", showCallFriendModal, { once: true });
 function showCallFriendModal() {
   if (callFriendModal.classList.value == "callfriendmodal hide") {
-    playAudioCall();
+    audio.playAudioCall();
   }
 
   callFriendModal.classList.toggle("show");
@@ -196,7 +198,7 @@ function showCallFriendModal() {
 closemodal.addEventListener("click", () => {
   callFriendModal.classList.toggle("show");
   if (callFriendModal.classList.value == "callfriendmodal hide") {
-    stopAudioPlay();
+    audio.stopAudioPlay();
   }
 });
 
@@ -209,43 +211,6 @@ function upWiningColumn() {
     costWiningColumn.childNodes[count - 1].classList.remove("costWinGold");
   }
 }
-
-//audio
-// function playAudio50() {
-//   audio50.play();
-// }
-
-// function playAudioCall() {
-//   audioCall.play();
-// }
-// function stopAudioPlay() {
-//   audioCall.currentTime = 0;
-//   audioCall.pause();
-// }
-
-// function playAdioPoll() {
-//   audioPoll.play();
-// }
-// function stopAudioPlayPoll() {
-//   audioPoll.currentTime = 0;
-//   audioPoll.pause();
-// }
-
-// function playAudioBckg() {
-//   audioBckg.play();
-// }
-// function stopAudioPlayBckg() {
-//   audioBckg.currentTime = 0;
-//   audioBckg.pause();
-// }
-
-// function playCorrect() {
-//   audioCorrect.play();
-// }
-
-// function playWrong() {
-//   audioWrong.play();
-// }
 
 //Кнопка включения аудио
 let isPlaying = true;
@@ -316,7 +281,7 @@ function getPollTip() {
     pollAudienceModal.classList.value ==
     "pollaudiencemodal pollaudience hide show"
   ) {
-    playAdioPoll();
+    audio.playAdioPoll();
   }
 
   if (count < 5) {
@@ -333,7 +298,7 @@ closemodalPoll.addEventListener("click", function () {
   if (
     pollAudienceModal.classList.value == "pollaudiencemodal pollaudience hide"
   ) {
-    stopAudioPlayPoll();
+    audio.stopAudioPlayPoll();
   }
 });
 
