@@ -1,39 +1,39 @@
-'use strict';
+"use strict";
+import { costWiningColumn } from "../modules-js/costWinning.js";
+import { questionsL, questionRandItem } from "../modules-js/easyquestions.js";
+import {
+  questionRandItemHeavy,
+  questionsHeavy,
+} from "../modules-js/heavyquestion.js"; //Случайный элемент массива
 
-const questionTitle = document.querySelector('.question-title'),
-      questionHTMLList = document.querySelector('.question-list'),
-      btn50 = document.querySelector('.tips__50'),
-      audio50 = document.getElementById('my-audio'),
-      audioCall = document.getElementById('my-audiocall'),
-      audioPoll = document.getElementById('my-audiopoll'),
-      audioBckg = document.getElementById('my-audiobckg'),
-      audioCorrect = document.getElementById('my-audiocorrect'),
-      audioWrong = document.getElementById('my-audiowrong'),
-      btnCallFriend = document.querySelector('.callFriend'),
-      callFriendModal = document.querySelector('.callfriendmodal'),
-      callFriendInner= document.querySelector('.callfriendinner'),
-      closemodal = document.querySelector('.closemodal'),
-      tipPollAudience = document.querySelector('.pollAudience'),
-      pollAudienceModal = document.querySelector('.pollaudiencemodal'),
-      closemodalPoll = document.querySelector('.closemodalPoll'),
-      pollAnswers = document.querySelector('.pollAnswers'),
-      bckgMusicBtn = document.querySelector('.bckgMusic'),  
-      arrLet = ['A', 'B', 'C', 'D'];
-    
-      import {costWiningColumn} from '../modules-js/costWinning.js';
-      import { questionsL, questionRandItem} from '../modules-js/easyquestions.js';
-      import { questionRandItemHeavy, questionsHeavy} from '../modules-js/heavyquestion.js'; //Случайный элемент массива
-      // import { createQuestion } from '../modules-js/create-question.js';
+const questionTitle = document.querySelector(".question-title"),
+  questionHTMLList = document.querySelector(".question-list"),
+  btn50 = document.querySelector(".tips__50"),
+  audio50 = document.getElementById("my-audio"),
+  audioCall = document.getElementById("my-audiocall"),
+  audioPoll = document.getElementById("my-audiopoll"),
+  audioBckg = document.getElementById("my-audiobckg"),
+  audioCorrect = document.getElementById("my-audiocorrect"),
+  audioWrong = document.getElementById("my-audiowrong"),
+  btnCallFriend = document.querySelector(".callFriend"),
+  callFriendModal = document.querySelector(".callfriendmodal"),
+  callFriendInner = document.querySelector(".callfriendinner"),
+  closemodal = document.querySelector(".closemodal"),
+  tipPollAudience = document.querySelector(".pollAudience"),
+  pollAudienceModal = document.querySelector(".pollaudiencemodal"),
+  closemodalPoll = document.querySelector(".closemodalPoll"),
+  pollAnswers = document.querySelector(".pollAnswers"),
+  bckgMusicBtn = document.querySelector(".bckgMusic"),
+  arrLet = ["A", "B", "C", "D"];
 
 let questionRandItemPlus = questionRandItem;
 let questionRandItemHeavyPlus = questionRandItemHeavy;
 
-
 let count = 0;
 let deleteTwoAnswerCount = 0;
 
-function removeDisabled(){
-  questionHTMLList.classList.remove('disabled');
+function removeDisabled() {
+  questionHTMLList.classList.remove("disabled");
 }
 
 createQuestion();
@@ -41,179 +41,172 @@ getAnswer();
 
 function createQuestion() {
   removeDisabled();
-  if(count >= 5) {
+  if (count >= 5) {
+    questionRandItemHeavyPlus = Math.floor(
+      Math.random() * questionsHeavy.length
+    );
 
-    questionRandItemHeavyPlus = Math.floor(Math.random()*questionsHeavy.length);
-    console.log(questionRandItemHeavyPlus + ' ранд номер');
-    console.log(questionsHeavy.length + ' длина');
-    console.log(questionsHeavy);
+    questionsHeavy.splice(questionRandItemHeavyPlus - 1, 1);
 
-    questionsHeavy.splice(questionRandItemHeavyPlus - 1,1);
-    console.log(questionsHeavy.length + ' длина');
+    questionTitle.innerHTML = "";
+    questionHTMLList.innerHTML = "";
 
-    questionTitle.innerHTML = '';
-    questionHTMLList.innerHTML = '';
-
-    questionTitle.innerHTML = questionsHeavy[questionRandItemHeavyPlus].question;
+    questionTitle.innerHTML =
+      questionsHeavy[questionRandItemHeavyPlus].question;
 
     questionsHeavy[questionRandItemHeavyPlus].answers.forEach((item, index) => {
-    questionHTMLList.innerHTML += `<li class="question-item"><span class=question-letter>${arrLet[index]}  </span>${item}</li>`;
-});
+      questionHTMLList.innerHTML += `<li class="question-item"><span class=question-letter>${arrLet[index]}  </span>${item}</li>`;
+    });
   } else {
+    questionRandItemPlus = Math.floor(Math.random() * questionsL.length);
+    questionsL.splice(questionRandItemPlus - 1, 1);
 
-    questionRandItemPlus = Math.floor(Math.random()*questionsL.length);
-    console.log(questionRandItemPlus);
-    questionsL.splice(questionRandItemPlus - 1,1);
-
-
-    questionTitle.innerHTML = '';
-    questionHTMLList.innerHTML = '';
+    questionTitle.innerHTML = "";
+    questionHTMLList.innerHTML = "";
     questionTitle.innerHTML = questionsL[questionRandItemPlus].question;
 
     questionsL[questionRandItemPlus].answers.forEach((item, index) => {
-
-    questionHTMLList.innerHTML += `<li class="question-item"><span class=question-letter>${arrLet[index]}  </span>${item}</li>`;
-  });
+      questionHTMLList.innerHTML += `<li class="question-item"><span class=question-letter>${arrLet[index]}  </span>${item}</li>`;
+    });
   }
 }
 
 function getAnswer() {
   let x = 20;
-  questionHTMLList.addEventListener('click', (e) => {
-
-    console.log(questionsL[questionRandItemPlus].correctAnswer, questionsHeavy
-      [questionRandItemHeavyPlus].correctAnswer);
-
-    if(e.target.lastChild.data == questionsL[questionRandItemPlus].correctAnswer || e.target.lastChild.data == questionsHeavy
-      [questionRandItemHeavyPlus].correctAnswer) { 
-
-      questionHTMLList.classList.add('disabled');
-      e.target.classList.add('disabled');
+  questionHTMLList.addEventListener("click", (e) => {
+    if (
+      e.target.lastChild.data ==
+        questionsL[questionRandItemPlus].correctAnswer ||
+      e.target.lastChild.data ==
+        questionsHeavy[questionRandItemHeavyPlus].correctAnswer
+    ) {
+      questionHTMLList.classList.add("disabled");
+      e.target.classList.add("disabled");
       function classAdd() {
-        e.target.classList.add('correctAnswer');
+        e.target.classList.add("correctAnswer");
       }
 
       playCorrect();
 
       setTimeout(classAdd, 1000);
-      
-      function changeCostWiningColumn(arg){
-        if(document.body.clientWidth < 479) {
-          costWiningColumn.style.cssText = `top: ${-15 + x}px; transition: top 1s;`
-          x+=24;
+
+      function changeCostWiningColumn(arg) {
+        if (document.body.clientWidth < 479) {
+          costWiningColumn.style.cssText = `top: ${
+            -15 + x
+          }px; transition: top 1s;`;
+          x += 24;
         }
       }
       changeCostWiningColumn(document.body.clientWidth);
 
-
       setTimeout(upWiningColumn, 1200);
 
-      setTimeout(function(){
+      setTimeout(function () {
         count++;
       }, 1300);
 
-
-
-      console.log(count + ' число');
       // swohWinModal();
 
       setTimeout(swohWinModal, 2000);
       function swohWinModal() {
-        if(count == 14) {
-          const modalWin = document.querySelector('.modalWin');
-          const modalWinInner = modalWin.querySelector('.modalwininner');
-          const gameBox = document.querySelector('.game-box');
+        if (count == 14) {
+          const modalWin = document.querySelector(".modalWin");
+          const modalWinInner = modalWin.querySelector(".modalwininner");
+          const gameBox = document.querySelector(".game-box");
           const modalWinBtn = document.querySelector(".modalwin-btn");
-          gameBox.classList.add('hide');
-          modalWin.classList.add('show');
-          modalWinInner.classList.add('show');
+          gameBox.classList.add("hide");
+          modalWin.classList.add("show");
+          modalWinInner.classList.add("show");
           modalWinInner.style = "display: flex";
-          modalWin.classList.add('zindex');  
-          modalWinBtn.addEventListener('click', (e)=> {
-            setTimeout(function(){
+          modalWin.classList.add("zindex");
+          modalWinBtn.addEventListener("click", (e) => {
+            setTimeout(function () {
               window.location.reload();
             }, 4000);
-          });        
+          });
         }
       }
 
       setTimeout(createQuestion, 2000);
     } else {
-      e.target.classList.add('incorrectAnswer');
+      e.target.classList.add("incorrectAnswer");
       playWrong();
-      setTimeout(function(){
+      setTimeout(function () {
         location.reload();
       }, 3000);
-      }  
+    }
   });
 }
 
 //50 на 50
-btn50.addEventListener('click', deleteTwoAnswer);
-btn50.addEventListener('click', playAudio50, { once: true });
-  
-  function deleteTwoAnswer() { //50/50
-    
-    btn50.classList.add('tipOpacity');
-    deleteTwoAnswerCount++;
-    if(deleteTwoAnswerCount == 1) {
+btn50.addEventListener("click", deleteTwoAnswer);
+btn50.addEventListener("click", playAudio50, { once: true });
 
-      questionHTMLList.childNodes.forEach(item => {
-        if(count>=5) {
-          if(item.innerText == questionsHeavy[questionRandItemHeavyPlus].incorrectAnswer[0] || item.innerText == questionsHeavy[questionRandItemHeavyPlus].incorrectAnswer[1]) {
-            item.textContent = '';
-          }
-        }       
-        if(count < 5) {
-          if(item.innerText == questionsL[questionRandItemPlus].incorrectAnswer[0] || item.innerText == questionsL[questionRandItemPlus].incorrectAnswer[1]) {
-            item.textContent = '';
-          }
+function deleteTwoAnswer() {
+  //50/50
+
+  btn50.classList.add("tipOpacity");
+  deleteTwoAnswerCount++;
+  if (deleteTwoAnswerCount == 1) {
+    questionHTMLList.childNodes.forEach((item) => {
+      if (count >= 5) {
+        if (
+          item.innerText ==
+            questionsHeavy[questionRandItemHeavyPlus].incorrectAnswer[0] ||
+          item.innerText ==
+            questionsHeavy[questionRandItemHeavyPlus].incorrectAnswer[1]
+        ) {
+          item.textContent = "";
         }
-      });
-    }
-};
+      }
+      if (count < 5) {
+        if (
+          item.innerText ==
+            questionsL[questionRandItemPlus].incorrectAnswer[0] ||
+          item.innerText == questionsL[questionRandItemPlus].incorrectAnswer[1]
+        ) {
+          item.textContent = "";
+        }
+      }
+    });
+  }
+}
 //--------//
 
 // Звонок другу
 
-btnCallFriend.addEventListener('click', showCallFriendModal, {once: true});
+btnCallFriend.addEventListener("click", showCallFriendModal, { once: true });
 function showCallFriendModal() {
-
-  if(callFriendModal.classList.value == 'callfriendmodal hide') {
+  if (callFriendModal.classList.value == "callfriendmodal hide") {
     playAudioCall();
   }
 
-  callFriendModal.classList.toggle('show');
-  btnCallFriend.classList.add('tipOpacity');
-  if(count < 5) {
-
+  callFriendModal.classList.toggle("show");
+  btnCallFriend.classList.add("tipOpacity");
+  if (count < 5) {
     getTimeoutAnswer();
-
   } else {
-
     getTimeoutHeavyAnswer();
   }
 }
 
-closemodal.addEventListener('click', ()=> {
-  callFriendModal.classList.toggle('show');
-  if(callFriendModal.classList.value == 'callfriendmodal hide') {
+closemodal.addEventListener("click", () => {
+  callFriendModal.classList.toggle("show");
+  if (callFriendModal.classList.value == "callfriendmodal hide") {
     stopAudioPlay();
   }
 });
 
-
 //----------------//
 
-
 function upWiningColumn() {
+  costWiningColumn.childNodes[count].classList.add("costWinGold");
 
-  costWiningColumn.childNodes[count].classList.add('costWinGold');
-
-  if(costWiningColumn.childNodes[count-1]) {
-    costWiningColumn.childNodes[count-1].classList.remove('costWinGold');
+  if (costWiningColumn.childNodes[count - 1]) {
+    costWiningColumn.childNodes[count - 1].classList.remove("costWinGold");
   }
-}  
+}
 
 //audio
 function playAudio50() {
@@ -228,7 +221,7 @@ function stopAudioPlay() {
   audioCall.pause();
 }
 
-function playAdioPoll(){
+function playAdioPoll() {
   audioPoll.play();
 }
 function stopAudioPlayPoll() {
@@ -236,7 +229,7 @@ function stopAudioPlayPoll() {
   audioPoll.pause();
 }
 
-function playAudioBckg(){
+function playAudioBckg() {
   audioBckg.play();
 }
 function stopAudioPlayBckg() {
@@ -244,53 +237,55 @@ function stopAudioPlayBckg() {
   audioBckg.pause();
 }
 
-function playCorrect(){
+function playCorrect() {
   audioCorrect.play();
 }
 
-function playWrong(){
+function playWrong() {
   audioWrong.play();
 }
 
 //Кнопка включения аудио
 let isPlaying = true;
-bckgMusicBtn.addEventListener('click', function() {
-  if(isPlaying) {
+bckgMusicBtn.addEventListener("click", function () {
+  if (isPlaying) {
     playAudioBckg();
     isPlaying = false;
-    bckgMusicBtn.classList.toggle('bckgMusicStop');
+    bckgMusicBtn.classList.toggle("bckgMusicStop");
   } else {
     stopAudioPlayBckg();
     isPlaying = true;
-    bckgMusicBtn.classList.remove('bckgMusicStop');
+    bckgMusicBtn.classList.remove("bckgMusicStop");
   }
 });
 
 //Отложенные действия в подсказке звонок другу
 
-function getTimeoutAnswer(){
-  setTimeout(()=>{
+function getTimeoutAnswer() {
+  setTimeout(() => {
     callFriendInner.innerHTML += `<h2 class = 'callmodaltitle'>Привет, подскажи ответ на это вопрос</h2>`;
   }, 1000);
-  setTimeout(()=>{
-    callFriendInner.innerHTML += `<p class = 'callmodaltext'> ${questionTitle.innerHTML = questionsL[questionRandItemPlus].question}</p>`;
+  setTimeout(() => {
+    callFriendInner.innerHTML += `<p class = 'callmodaltext'> ${(questionTitle.innerHTML =
+      questionsL[questionRandItemPlus].question)}</p>`;
   }, 3000);
-  setTimeout(function(){
+  setTimeout(function () {
     callFriendInner.innerHTML += `<p class = 'callmodaltextanswer'>Это просто! Думаю что ответ ${questionsL[questionRandItemPlus].correctAnswer}</p>`;
   }, 7000);
 }
 
-function getTimeoutHeavyAnswer(){
-  setTimeout(()=>{
+function getTimeoutHeavyAnswer() {
+  setTimeout(() => {
     callFriendInner.innerHTML += `<h2 class = 'callmodaltitle'>Привет, подскажи ответ на это вопрос</h2>`;
   }, 1000);
-  setTimeout(()=>{
-    callFriendInner.innerHTML +=  `<p class = 'callmodaltext'> ${questionTitle.innerHTML = questionsHeavy[questionRandItemHeavyPlus].question}</p>`;
+  setTimeout(() => {
+    callFriendInner.innerHTML += `<p class = 'callmodaltext'> ${(questionTitle.innerHTML =
+      questionsHeavy[questionRandItemHeavyPlus].question)}</p>`;
   }, 3000);
-  setTimeout(function(){
-    callFriendInner.innerHTML += `<p class = 'callmodaltext'>Надо подумать...</p>`
+  setTimeout(function () {
+    callFriendInner.innerHTML += `<p class = 'callmodaltext'>Надо подумать...</p>`;
   }, 7000);
-  setTimeout(function(){
+  setTimeout(function () {
     callFriendInner.innerHTML += `<p class = 'callmodaltextanswer'> Я конечно сомневаюсь, но попробую ответ ${questionsHeavy[questionRandItemHeavyPlus].correctAnswer}</p>`;
   }, 11000);
 }
@@ -300,81 +295,98 @@ function getTimeoutHeavyAnswer(){
 // let pollAnswertext;
 let textHeight;
 function getRandomNumMore60(min, max) {
-  textHeight =  Math.floor(Math.random() * (max - min)) + min;
+  textHeight = Math.floor(Math.random() * (max - min)) + min;
   return textHeight;
 }
 getRandomNumMore60(60, 90);
 
 let textHeightMin;
 function getRandomNumLess60(min, max) {
-  textHeightMin =  Math.floor(Math.random() * (max - min)) + min;
+  textHeightMin = Math.floor(Math.random() * (max - min)) + min;
   return textHeight;
 }
 
-tipPollAudience.addEventListener('click', getPollTip, {once: true});
+tipPollAudience.addEventListener("click", getPollTip, { once: true });
 
 function getPollTip() {
-  pollAudienceModal.classList.toggle('show');
-  if(pollAudienceModal.classList.value == 'pollaudiencemodal pollaudience hide show') {
+  pollAudienceModal.classList.toggle("show");
+  if (
+    pollAudienceModal.classList.value ==
+    "pollaudiencemodal pollaudience hide show"
+  ) {
     playAdioPoll();
   }
 
-  if(count < 5) {
+  if (count < 5) {
     showEasyPollAnswers();
   } else {
     showHeavyPollAnswers();
   }
-  tipPollAudience.classList.add('tipOpacity');
+  tipPollAudience.classList.add("tipOpacity");
 }
 
+closemodalPoll.addEventListener("click", function () {
+  pollAudienceModal.classList.toggle("show");
 
-closemodalPoll.addEventListener('click', function(){
-  pollAudienceModal.classList.toggle('show');
-
-  if(pollAudienceModal.classList.value == 'pollaudiencemodal pollaudience hide') {
+  if (
+    pollAudienceModal.classList.value == "pollaudiencemodal pollaudience hide"
+  ) {
     stopAudioPlayPoll();
   }
 });
 
 function showEasyPollAnswers() {
-  arrLet.forEach(arrLetItem=> {
-    pollAnswers.innerHTML+=`
+  arrLet.forEach((arrLetItem) => {
+    pollAnswers.innerHTML += `
   //   <div class = pollAnswercolumn>
   //   <div class = pollcolorcolumn></div>
   //   <p class='pollAnswertext'>${arrLetItem}</p>
   //   </div>`;
-  const pollAnswertext = document.querySelectorAll('.pollAnswertext');
-  pollAnswertext.forEach(textItem=> {
-    if(typeof(questionsL[questionRandItemPlus].correctPollAnswer) == 'number') {
-        questionsL[questionRandItemPlus].correctPollAnswer = String(questionsL[questionRandItemPlus].correctPollAnswer);
+    const pollAnswertext = document.querySelectorAll(".pollAnswertext");
+    pollAnswertext.forEach((textItem) => {
+      if (
+        typeof questionsL[questionRandItemPlus].correctPollAnswer == "number"
+      ) {
+        questionsL[questionRandItemPlus].correctPollAnswer = String(
+          questionsL[questionRandItemPlus].correctPollAnswer
+        );
       }
-    if(questionsL[questionRandItemPlus].correctPollAnswer == textItem.innerText) {
-      textItem.previousElementSibling.style.cssText = `background-color: green; height: ${textHeight}%`;
-    } else{
-          getRandomNumLess60(10, 50);
-          textItem.previousElementSibling.style.cssText = `background-color: red; height: ${textHeightMin}%`;
-        }
-  });  
+      if (
+        questionsL[questionRandItemPlus].correctPollAnswer == textItem.innerText
+      ) {
+        textItem.previousElementSibling.style.cssText = `background-color: green; height: ${textHeight}%`;
+      } else {
+        getRandomNumLess60(10, 50);
+        textItem.previousElementSibling.style.cssText = `background-color: red; height: ${textHeightMin}%`;
+      }
+    });
   });
 }
 
 function showHeavyPollAnswers() {
-  arrLet.forEach(arrLetItem=> {
-
-    pollAnswers.innerHTML+=`
+  arrLet.forEach((arrLetItem) => {
+    pollAnswers.innerHTML += `
     <div class = pollAnswercolumn>
     <div class = pollcolorcolumn></div>
     <p class='pollAnswertext'>${arrLetItem}</p>
-    </div>`;    
+    </div>`;
   });
-  const pollAnswertext = document.querySelectorAll('.pollAnswertext');
-  pollAnswertext.forEach(textItem=> {
-    if(typeof(questionsHeavy[questionRandItemHeavyPlus].correctPollAnswer) == 'number') {
-      questionsHeavy[questionRandItemHeavyPlus].correctPollAnswer = String(questionsHeavy[questionRandItemHeavyPlus].correctPollAnswer);
+  const pollAnswertext = document.querySelectorAll(".pollAnswertext");
+  pollAnswertext.forEach((textItem) => {
+    if (
+      typeof questionsHeavy[questionRandItemHeavyPlus].correctPollAnswer ==
+      "number"
+    ) {
+      questionsHeavy[questionRandItemHeavyPlus].correctPollAnswer = String(
+        questionsHeavy[questionRandItemHeavyPlus].correctPollAnswer
+      );
     }
-    if(textItem.textContent === questionsHeavy[questionRandItemHeavyPlus].correctPollAnswer) {
+    if (
+      textItem.textContent ===
+      questionsHeavy[questionRandItemHeavyPlus].correctPollAnswer
+    ) {
       textItem.previousElementSibling.style.cssText = `background-color: green; height: ${textHeight}%`;
-    } else{
+    } else {
       getRandomNumLess60(10, 50);
       textItem.previousElementSibling.style.cssText = `background-color: red; height: ${textHeightMin}%`;
     }
