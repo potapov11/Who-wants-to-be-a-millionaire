@@ -2,6 +2,7 @@
 
 import { costWiningColumn } from "../modules-js/costWinning.js";
 import { audio } from "../modules-js/audio.js";
+import { tip50 } from "../modules-js/tip_50.js";
 import { questionsL, questionRandItem } from "../modules-js/easyquestions.js";
 import {
   questionRandItemHeavy,
@@ -10,8 +11,8 @@ import {
 
 const questionTitle = document.querySelector(".question-title"),
   questionHTMLList = document.querySelector(".question-list"),
-  btn50 = document.querySelector(".tips__50"),
   btnCallFriend = document.querySelector(".callFriend"),
+  btn50 = document.querySelector(".tips__50"),
   callFriendModal = document.querySelector(".callfriendmodal"),
   callFriendInner = document.querySelector(".callfriendinner"),
   closemodal = document.querySelector(".closemodal"),
@@ -24,8 +25,13 @@ const questionTitle = document.querySelector(".question-title"),
 
 let questionRandItemPlus = questionRandItem;
 let questionRandItemHeavyPlus = questionRandItemHeavy;
+export { questionRandItemPlus };
+export { questionRandItemHeavyPlus };
+export { questionHTMLList };
+export { btn50 };
 
 let count = 0;
+export { count };
 let deleteTwoAnswerCount = 0;
 
 function removeDisabled() {
@@ -82,7 +88,7 @@ function getAnswer() {
         e.target.classList.add("correctAnswer");
       }
 
-      playCorrect();
+      audio.playCorrect();
 
       setTimeout(classAdd, 1000);
 
@@ -136,39 +142,8 @@ function getAnswer() {
 }
 
 //50 на 50
-// btn50.addEventListener("click", deleteTwoAnswer);
-// btn50.addEventListener("click", audio.playAudio_50, { once: true });
-
-// function deleteTwoAnswer() {
-//   //50/50
-
-//   btn50.classList.add("tipOpacity");
-//   deleteTwoAnswerCount++;
-//   if (deleteTwoAnswerCount == 1) {
-//     questionHTMLList.childNodes.forEach((item) => {
-//       if (count >= 5) {
-//         if (
-//           item.innerText ==
-//             questionsHeavy[questionRandItemHeavyPlus].incorrectAnswer[0] ||
-//           item.innerText ==
-//             questionsHeavy[questionRandItemHeavyPlus].incorrectAnswer[1]
-//         ) {
-//           item.textContent = "";
-//         }
-//       }
-//       if (count < 5) {
-//         if (
-//           item.innerText ==
-//             questionsL[questionRandItemPlus].incorrectAnswer[0] ||
-//           item.innerText == questionsL[questionRandItemPlus].incorrectAnswer[1]
-//         ) {
-//           item.textContent = "";
-//         }
-//       }
-//     });
-//   }
-// }
-//--------//
+btn50.addEventListener("click", tip50);
+btn50.addEventListener("click", audio.playAudio_50, { once: true });
 
 // Звонок другу
 
