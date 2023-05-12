@@ -1,15 +1,7 @@
 "use strict";
 
 import { costWiningColumn } from "../modules-js/costWinning.js";
-import {
-  audio,
-  audio50,
-  audioCall,
-  audioPoll,
-  audioBckg,
-  audioCorrect,
-  audioWrong,
-} from "../modules-js/audio.js";
+import { audio } from "../modules-js/audio.js";
 import { questionsL, questionRandItem } from "../modules-js/easyquestions.js";
 import {
   questionRandItemHeavy,
@@ -144,38 +136,38 @@ function getAnswer() {
 }
 
 //50 на 50
-btn50.addEventListener("click", deleteTwoAnswer);
-btn50.addEventListener("click", audio.playAudio_50, { once: true });
+// btn50.addEventListener("click", deleteTwoAnswer);
+// btn50.addEventListener("click", audio.playAudio_50, { once: true });
 
-function deleteTwoAnswer() {
-  //50/50
+// function deleteTwoAnswer() {
+//   //50/50
 
-  btn50.classList.add("tipOpacity");
-  deleteTwoAnswerCount++;
-  if (deleteTwoAnswerCount == 1) {
-    questionHTMLList.childNodes.forEach((item) => {
-      if (count >= 5) {
-        if (
-          item.innerText ==
-            questionsHeavy[questionRandItemHeavyPlus].incorrectAnswer[0] ||
-          item.innerText ==
-            questionsHeavy[questionRandItemHeavyPlus].incorrectAnswer[1]
-        ) {
-          item.textContent = "";
-        }
-      }
-      if (count < 5) {
-        if (
-          item.innerText ==
-            questionsL[questionRandItemPlus].incorrectAnswer[0] ||
-          item.innerText == questionsL[questionRandItemPlus].incorrectAnswer[1]
-        ) {
-          item.textContent = "";
-        }
-      }
-    });
-  }
-}
+//   btn50.classList.add("tipOpacity");
+//   deleteTwoAnswerCount++;
+//   if (deleteTwoAnswerCount == 1) {
+//     questionHTMLList.childNodes.forEach((item) => {
+//       if (count >= 5) {
+//         if (
+//           item.innerText ==
+//             questionsHeavy[questionRandItemHeavyPlus].incorrectAnswer[0] ||
+//           item.innerText ==
+//             questionsHeavy[questionRandItemHeavyPlus].incorrectAnswer[1]
+//         ) {
+//           item.textContent = "";
+//         }
+//       }
+//       if (count < 5) {
+//         if (
+//           item.innerText ==
+//             questionsL[questionRandItemPlus].incorrectAnswer[0] ||
+//           item.innerText == questionsL[questionRandItemPlus].incorrectAnswer[1]
+//         ) {
+//           item.textContent = "";
+//         }
+//       }
+//     });
+//   }
+// }
 //--------//
 
 // Звонок другу
