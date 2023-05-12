@@ -1,5 +1,7 @@
 "use strict";
+
 import { costWiningColumn } from "../modules-js/costWinning.js";
+import { audio } from "../modules-js/audio.js";
 import { questionsL, questionRandItem } from "../modules-js/easyquestions.js";
 import {
   questionRandItemHeavy,
@@ -141,7 +143,7 @@ function getAnswer() {
 
 //50 на 50
 btn50.addEventListener("click", deleteTwoAnswer);
-btn50.addEventListener("click", playAudio50, { once: true });
+btn50.addEventListener("click", audio.playAudio50, { once: true });
 
 function deleteTwoAnswer() {
   //50/50
@@ -209,51 +211,51 @@ function upWiningColumn() {
 }
 
 //audio
-function playAudio50() {
-  audio50.play();
-}
+// function playAudio50() {
+//   audio50.play();
+// }
 
-function playAudioCall() {
-  audioCall.play();
-}
-function stopAudioPlay() {
-  audioCall.currentTime = 0;
-  audioCall.pause();
-}
+// function playAudioCall() {
+//   audioCall.play();
+// }
+// function stopAudioPlay() {
+//   audioCall.currentTime = 0;
+//   audioCall.pause();
+// }
 
-function playAdioPoll() {
-  audioPoll.play();
-}
-function stopAudioPlayPoll() {
-  audioPoll.currentTime = 0;
-  audioPoll.pause();
-}
+// function playAdioPoll() {
+//   audioPoll.play();
+// }
+// function stopAudioPlayPoll() {
+//   audioPoll.currentTime = 0;
+//   audioPoll.pause();
+// }
 
-function playAudioBckg() {
-  audioBckg.play();
-}
-function stopAudioPlayBckg() {
-  audioBckg.currentTime = 0;
-  audioBckg.pause();
-}
+// function playAudioBckg() {
+//   audioBckg.play();
+// }
+// function stopAudioPlayBckg() {
+//   audioBckg.currentTime = 0;
+//   audioBckg.pause();
+// }
 
-function playCorrect() {
-  audioCorrect.play();
-}
+// function playCorrect() {
+//   audioCorrect.play();
+// }
 
-function playWrong() {
-  audioWrong.play();
-}
+// function playWrong() {
+//   audioWrong.play();
+// }
 
 //Кнопка включения аудио
 let isPlaying = true;
 bckgMusicBtn.addEventListener("click", function () {
   if (isPlaying) {
-    playAudioBckg();
+    audio.playAudioBckg();
     isPlaying = false;
     bckgMusicBtn.classList.toggle("bckgMusicStop");
   } else {
-    stopAudioPlayBckg();
+    audio.stopAudioPlayBckg();
     isPlaying = true;
     bckgMusicBtn.classList.remove("bckgMusicStop");
   }
