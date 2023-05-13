@@ -53,12 +53,11 @@ function getNewRandPlus() {
 }
 
 function countPlus() {
-  console.log(count);
+  console.log(count + " func");
   count++;
-  console.log(count);
+  console.log(count + " func");
   return count;
 }
-// countPlus();
 
 export { getNewRandHeavyPlus };
 export { getNewRandPlus };
@@ -132,7 +131,7 @@ export { countPlus };
 //   });
 // }
 
-getAnswer();
+// getAnswer();
 
 //50 на 50
 btn50.addEventListener("click", tip50);

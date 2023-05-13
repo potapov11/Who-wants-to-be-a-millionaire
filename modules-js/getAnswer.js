@@ -19,6 +19,7 @@ import {
 } from "../js/main.js";
 
 function upWiningColumn() {
+  console.log(count);
   costWiningColumn.childNodes[count].classList.add("costWinGold");
   console.log(count);
   if (costWiningColumn.childNodes[count - 1]) {
@@ -55,11 +56,9 @@ function getAnswer() {
       }
       changeCostWiningColumn(document.body.clientWidth);
 
-      // setTimeout(upWiningColumn, 1200);
+      setTimeout(upWiningColumn, 1200);
 
-      setTimeout(function () {
-        countPlus();
-      }, 1300);
+      setTimeout(countPlus, 1300);
 
       // swohWinModal();
 
