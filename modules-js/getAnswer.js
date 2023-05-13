@@ -19,9 +19,7 @@ import {
 } from "../js/main.js";
 
 function upWiningColumn() {
-  console.log(count);
   costWiningColumn.childNodes[count].classList.add("costWinGold");
-  console.log(count);
   if (costWiningColumn.childNodes[count - 1]) {
     costWiningColumn.childNodes[count - 1].classList.remove("costWinGold");
   }

@@ -63,9 +63,7 @@ function getNewRandPlus() {
 }
 
 function countPlus() {
-  console.log(count + " func");
   count++;
-  console.log(count + " func");
   return count;
 }
 
