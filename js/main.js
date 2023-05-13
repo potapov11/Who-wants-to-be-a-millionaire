@@ -3,11 +3,13 @@
 import { costWiningColumn } from "../modules-js/costWinning.js";
 import { audio } from "../modules-js/audio.js";
 import { tip50 } from "../modules-js/tip_50.js";
+import { createQuestion } from "../modules-js/createQuestion.js";
 import { questionsL, questionRandItem } from "../modules-js/easyquestions.js";
 import {
   questionRandItemHeavy,
   questionsHeavy,
 } from "../modules-js/heavyquestion.js"; //Случайный элемент массива
+import { getAnswer } from "../modules-js/getAnswer.js";
 
 const questionTitle = document.querySelector(".question-title"),
   questionHTMLList = document.querySelector(".question-list"),
@@ -25,121 +27,112 @@ const questionTitle = document.querySelector(".question-title"),
 
 let questionRandItemPlus = questionRandItem;
 let questionRandItemHeavyPlus = questionRandItemHeavy;
+
 export { questionRandItemPlus };
 export { questionRandItemHeavyPlus };
 export { questionHTMLList };
 export { btn50 };
+export { questionTitle };
+export { arrLet };
 
 let count = 0;
 export { count };
 let deleteTwoAnswerCount = 0;
 
-function removeDisabled() {
-  questionHTMLList.classList.remove("disabled");
-}
-
 createQuestion();
 getAnswer();
 
-function createQuestion() {
-  removeDisabled();
-  if (count >= 5) {
-    questionRandItemHeavyPlus = Math.floor(
-      Math.random() * questionsHeavy.length
-    );
-
-    questionsHeavy.splice(questionRandItemHeavyPlus - 1, 1);
-
-    questionTitle.innerHTML = "";
-    questionHTMLList.innerHTML = "";
-
-    questionTitle.innerHTML =
-      questionsHeavy[questionRandItemHeavyPlus].question;
-
-    questionsHeavy[questionRandItemHeavyPlus].answers.forEach((item, index) => {
-      questionHTMLList.innerHTML += `<li class="question-item"><span class=question-letter>${arrLet[index]}  </span>${item}</li>`;
-    });
-  } else {
-    questionRandItemPlus = Math.floor(Math.random() * questionsL.length);
-    questionsL.splice(questionRandItemPlus - 1, 1);
-
-    questionTitle.innerHTML = "";
-    questionHTMLList.innerHTML = "";
-    questionTitle.innerHTML = questionsL[questionRandItemPlus].question;
-
-    questionsL[questionRandItemPlus].answers.forEach((item, index) => {
-      questionHTMLList.innerHTML += `<li class="question-item"><span class=question-letter>${arrLet[index]}  </span>${item}</li>`;
-    });
-  }
+function getNewRandHeavyPlus() {
+  questionRandItemHeavyPlus = Math.floor(Math.random() * questionsHeavy.length);
+  return questionRandItemHeavyPlus;
 }
 
-function getAnswer() {
-  let x = 20;
-  questionHTMLList.addEventListener("click", (e) => {
-    if (
-      e.target.lastChild.data ==
-        questionsL[questionRandItemPlus].correctAnswer ||
-      e.target.lastChild.data ==
-        questionsHeavy[questionRandItemHeavyPlus].correctAnswer
-    ) {
-      questionHTMLList.classList.add("disabled");
-      e.target.classList.add("disabled");
-      function classAdd() {
-        e.target.classList.add("correctAnswer");
-      }
-
-      audio.playCorrect();
-
-      setTimeout(classAdd, 1000);
-
-      function changeCostWiningColumn(arg) {
-        if (document.body.clientWidth < 479) {
-          costWiningColumn.style.cssText = `top: ${
-            -15 + x
-          }px; transition: top 1s;`;
-          x += 24;
-        }
-      }
-      changeCostWiningColumn(document.body.clientWidth);
-
-      setTimeout(upWiningColumn, 1200);
-
-      setTimeout(function () {
-        count++;
-      }, 1300);
-
-      // swohWinModal();
-
-      setTimeout(swohWinModal, 2000);
-      function swohWinModal() {
-        if (count == 14) {
-          const modalWin = document.querySelector(".modalWin");
-          const modalWinInner = modalWin.querySelector(".modalwininner");
-          const gameBox = document.querySelector(".game-box");
-          const modalWinBtn = document.querySelector(".modalwin-btn");
-          gameBox.classList.add("hide");
-          modalWin.classList.add("show");
-          modalWinInner.classList.add("show");
-          modalWinInner.style = "display: flex";
-          modalWin.classList.add("zindex");
-          modalWinBtn.addEventListener("click", (e) => {
-            setTimeout(function () {
-              window.location.reload();
-            }, 4000);
-          });
-        }
-      }
-
-      setTimeout(createQuestion, 2000);
-    } else {
-      e.target.classList.add("incorrectAnswer");
-      playWrong();
-      setTimeout(function () {
-        location.reload();
-      }, 3000);
-    }
-  });
+function getNewRandPlus() {
+  questionRandItemPlus = Math.floor(Math.random() * questionsL.length);
+  return questionRandItemPlus;
 }
+
+function countPlus() {
+  console.log(count);
+  count++;
+  console.log(count);
+  return count;
+}
+// countPlus();
+
+export { getNewRandHeavyPlus };
+export { getNewRandPlus };
+export { countPlus };
+
+// function getAnswer() {
+//   let x = 20;
+//   questionHTMLList.addEventListener("click", (e) => {
+//     if (
+//       e.target.lastChild.data ==
+//         questionsL[questionRandItemPlus].correctAnswer ||
+//       e.target.lastChild.data ==
+//         questionsHeavy[questionRandItemHeavyPlus].correctAnswer
+//     ) {
+//       questionHTMLList.classList.add("disabled");
+//       e.target.classList.add("disabled");
+//       function classAdd() {
+//         e.target.classList.add("correctAnswer");
+//       }
+
+//       audio.playCorrect();
+
+//       setTimeout(classAdd, 1000);
+
+//       function changeCostWiningColumn(arg) {
+//         if (document.body.clientWidth < 479) {
+//           costWiningColumn.style.cssText = `top: ${
+//             -15 + x
+//           }px; transition: top 1s;`;
+//           x += 24;
+//         }
+//       }
+//       changeCostWiningColumn(document.body.clientWidth);
+
+//       setTimeout(upWiningColumn, 1200);
+
+//       setTimeout(function () {
+//         count++;
+//       }, 1300);
+
+//       // swohWinModal();
+
+//       setTimeout(swohWinModal, 2000);
+//       function swohWinModal() {
+//         if (count == 14) {
+//           const modalWin = document.querySelector(".modalWin");
+//           const modalWinInner = modalWin.querySelector(".modalwininner");
+//           const gameBox = document.querySelector(".game-box");
+//           const modalWinBtn = document.querySelector(".modalwin-btn");
+//           gameBox.classList.add("hide");
+//           modalWin.classList.add("show");
+//           modalWinInner.classList.add("show");
+//           modalWinInner.style = "display: flex";
+//           modalWin.classList.add("zindex");
+//           modalWinBtn.addEventListener("click", (e) => {
+//             setTimeout(function () {
+//               window.location.reload();
+//             }, 4000);
+//           });
+//         }
+//       }
+
+//       setTimeout(createQuestion, 2000);
+//     } else {
+//       e.target.classList.add("incorrectAnswer");
+//       playWrong();
+//       setTimeout(function () {
+//         location.reload();
+//       }, 3000);
+//     }
+//   });
+// }
+
+getAnswer();
 
 //50 на 50
 btn50.addEventListener("click", tip50);
@@ -171,13 +164,13 @@ closemodal.addEventListener("click", () => {
 
 //----------------//
 
-function upWiningColumn() {
-  costWiningColumn.childNodes[count].classList.add("costWinGold");
+// function upWiningColumn() {
+//   costWiningColumn.childNodes[count].classList.add("costWinGold");
 
-  if (costWiningColumn.childNodes[count - 1]) {
-    costWiningColumn.childNodes[count - 1].classList.remove("costWinGold");
-  }
-}
+//   if (costWiningColumn.childNodes[count - 1]) {
+//     costWiningColumn.childNodes[count - 1].classList.remove("costWinGold");
+//   }
+// }
 
 //Кнопка включения аудио
 let isPlaying = true;
