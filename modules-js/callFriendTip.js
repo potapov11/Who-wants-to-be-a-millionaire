@@ -1,4 +1,8 @@
 const callFriendModal = document.querySelector(".callfriendmodal");
+import {
+  questionRandItemHeavy,
+  questionsHeavy,
+} from "../modules-js/heavyquestion.js"; //Случайный элемент массива
 import { audio } from "./audio.js";
 import {
   btnCallFriend,

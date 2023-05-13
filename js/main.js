@@ -15,17 +15,19 @@ import {
   callFriendModalFunc,
   closeModalCallFriend,
 } from "../modules-js/callFriendTip.js";
+import {
+  getPollTip,
+  showEasyPollAnswers,
+  showHeavyPollAnswers,
+} from "../modules-js/tipPollAudience.js";
 
 const questionTitle = document.querySelector(".question-title"),
   questionHTMLList = document.querySelector(".question-list"),
   btnCallFriend = document.querySelector(".callFriend"),
   btn50 = document.querySelector(".tips__50"),
-  // callFriendModal = document.querySelector(".callfriendmodal"),
   callFriendInner = document.querySelector(".callfriendinner"),
   closemodal = document.querySelector(".closemodal"),
   tipPollAudience = document.querySelector(".pollAudience"),
-  pollAudienceModal = document.querySelector(".pollaudiencemodal"),
-  closemodalPoll = document.querySelector(".closemodalPoll"),
   pollAnswers = document.querySelector(".pollAnswers"),
   arrLet = ["A", "B", "C", "D"];
 
@@ -40,6 +42,8 @@ export { questionTitle };
 export { arrLet };
 export { btnCallFriend };
 export { callFriendInner };
+export { pollAnswers };
+export { tipPollAudience };
 
 let count = 0;
 export { count };
@@ -81,103 +85,4 @@ closemodal.addEventListener("click", closeModalCallFriend);
 playBckgMusic();
 
 //Помощь зала
-// let pollAnswertext;
-let textHeight;
-function getRandomNumMore60(min, max) {
-  textHeight = Math.floor(Math.random() * (max - min)) + min;
-  return textHeight;
-}
-getRandomNumMore60(60, 90);
-
-let textHeightMin;
-function getRandomNumLess60(min, max) {
-  textHeightMin = Math.floor(Math.random() * (max - min)) + min;
-  return textHeight;
-}
-
 tipPollAudience.addEventListener("click", getPollTip, { once: true });
-
-function getPollTip() {
-  pollAudienceModal.classList.toggle("show");
-  if (
-    pollAudienceModal.classList.value ==
-    "pollaudiencemodal pollaudience hide show"
-  ) {
-    audio.playAdioPoll();
-  }
-
-  if (count < 5) {
-    showEasyPollAnswers();
-  } else {
-    showHeavyPollAnswers();
-  }
-  tipPollAudience.classList.add("tipOpacity");
-}
-
-closemodalPoll.addEventListener("click", function () {
-  pollAudienceModal.classList.toggle("show");
-
-  if (
-    pollAudienceModal.classList.value == "pollaudiencemodal pollaudience hide"
-  ) {
-    audio.stopAudioPlayPoll();
-  }
-});
-
-function showEasyPollAnswers() {
-  arrLet.forEach((arrLetItem) => {
-    pollAnswers.innerHTML += `
-  //   <div class = pollAnswercolumn>
-  //   <div class = pollcolorcolumn></div>
-  //   <p class='pollAnswertext'>${arrLetItem}</p>
-  //   </div>`;
-    const pollAnswertext = document.querySelectorAll(".pollAnswertext");
-    pollAnswertext.forEach((textItem) => {
-      if (
-        typeof questionsL[questionRandItemPlus].correctPollAnswer == "number"
-      ) {
-        questionsL[questionRandItemPlus].correctPollAnswer = String(
-          questionsL[questionRandItemPlus].correctPollAnswer
-        );
-      }
-      if (
-        questionsL[questionRandItemPlus].correctPollAnswer == textItem.innerText
-      ) {
-        textItem.previousElementSibling.style.cssText = `background-color: green; height: ${textHeight}%`;
-      } else {
-        getRandomNumLess60(10, 50);
-        textItem.previousElementSibling.style.cssText = `background-color: red; height: ${textHeightMin}%`;
-      }
-    });
-  });
-}
-
-function showHeavyPollAnswers() {
-  arrLet.forEach((arrLetItem) => {
-    pollAnswers.innerHTML += `
-    <div class = pollAnswercolumn>
-    <div class = pollcolorcolumn></div>
-    <p class='pollAnswertext'>${arrLetItem}</p>
-    </div>`;
-  });
-  const pollAnswertext = document.querySelectorAll(".pollAnswertext");
-  pollAnswertext.forEach((textItem) => {
-    if (
-      typeof questionsHeavy[questionRandItemHeavyPlus].correctPollAnswer ==
-      "number"
-    ) {
-      questionsHeavy[questionRandItemHeavyPlus].correctPollAnswer = String(
-        questionsHeavy[questionRandItemHeavyPlus].correctPollAnswer
-      );
-    }
-    if (
-      textItem.textContent ===
-      questionsHeavy[questionRandItemHeavyPlus].correctPollAnswer
-    ) {
-      textItem.previousElementSibling.style.cssText = `background-color: green; height: ${textHeight}%`;
-    } else {
-      getRandomNumLess60(10, 50);
-      textItem.previousElementSibling.style.cssText = `background-color: red; height: ${textHeightMin}%`;
-    }
-  });
-}
