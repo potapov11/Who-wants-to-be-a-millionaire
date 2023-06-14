@@ -1,86 +1,84 @@
-"use strict";
+'use strict';
 
-import { costWiningColumn } from "../modules-js/costWinning.js";
-import { audio } from "../modules-js/audio.js";
-import { tip50 } from "../modules-js/tip_50.js";
-import { createQuestion } from "../modules-js/createQuestion.js";
-import { questionsL, questionRandItem } from "../modules-js/easyquestions.js";
-import {
-  questionRandItemHeavy,
-  questionsHeavy,
-} from "../modules-js/heavyquestion.js"; //Случайный элемент массива
-import { getAnswer } from "../modules-js/getAnswer.js";
-import { playBckgMusic } from "../modules-js/audio.js";
-import {
-  callFriendModalFunc,
-  closeModalCallFriend,
-} from "../modules-js/callFriendTip.js";
-import {
-  getPollTip,
-  showEasyPollAnswers,
-  showHeavyPollAnswers,
-} from "../modules-js/tipPollAudience.js";
+const questionTitle = document.querySelector('.question-title'),
+      questionHTMLList = document.querySelector('.question-list'),
+      btn50 = document.querySelector('.tips__50');
 
-const questionTitle = document.querySelector(".question-title"),
-  questionHTMLList = document.querySelector(".question-list"),
-  btnCallFriend = document.querySelector(".callFriend"),
-  btn50 = document.querySelector(".tips__50"),
-  callFriendInner = document.querySelector(".callfriendinner"),
-  closemodal = document.querySelector(".closemodal"),
-  tipPollAudience = document.querySelector(".pollAudience"),
-  pollAnswers = document.querySelector(".pollAnswers"),
-  arrLet = ["A", "B", "C", "D"];
+      import {costWiningColumn} from './costWinning.js';
+      import {expCostWiningColumn} from './costWinning.js';
+      import { questionsL} from './easyquestions.js';
 
-let questionRandItemPlus = questionRandItem;
-let questionRandItemHeavyPlus = questionRandItemHeavy;
-
-export { questionRandItemPlus };
-export { questionRandItemHeavyPlus };
-export { questionHTMLList };
-export { btn50 };
-export { questionTitle };
-export { arrLet };
-export { btnCallFriend };
-export { callFriendInner };
-export { pollAnswers };
-export { tipPollAudience };
 
 let count = 0;
-export { count };
-let deleteTwoAnswerCount = 0;
 
 createQuestion();
+
 getAnswer();
 
-function getNewRandHeavyPlus() {
-  questionRandItemHeavyPlus = Math.floor(Math.random() * questionsHeavy.length);
-  return questionRandItemHeavyPlus;
+function createQuestion() {
+
+  questionTitle.innerHTML = '';
+  questionHTMLList.innerHTML = '';
+  questionTitle.innerHTML = questionsL[count].question;
+  questionsL[count].answers.forEach(item => {
+    questionHTMLList.innerHTML += `<li class="question-item">${item}</li>`;
+  });
+
 }
 
-function getNewRandPlus() {
-  questionRandItemPlus = Math.floor(Math.random() * questionsL.length);
-  return questionRandItemPlus;
+//new changes
+
+function getAnswer() {
+
+  questionHTMLList.addEventListener('click', (e) => {
+    // if(e.target.tagName !== 'LI') return;
+
+    if(e.target.textContent == questionsL[count].correctAnswer) { 
+
+      function classAdd() {
+        e.target.classList.add('correctAnswer');
+      }
+
+      setTimeout(classAdd, 1000);
+
+      setTimeout(upWiningColumn, 1200);
+
+      setTimeout(function(){
+        count++;
+      }, 1300);
+
+      setTimeout(createQuestion, 2000);
+
+    } else {
+      console.log('incorrect');
+      e.target.classList.add('incorrectAnswer');
+      createQuestion();
+      }    
+  });
+
 }
 
-function countPlus() {
-  count++;
-  return count;
-}
 
-export { getNewRandHeavyPlus };
-export { getNewRandPlus };
-export { countPlus };
 
-//50 на 50
-btn50.addEventListener("click", tip50);
-btn50.addEventListener("click", audio.playAudio_50, { once: true });
+btn50.addEventListener('click', deleteTwoAnswer);
 
-// Звонок другу
-btnCallFriend.addEventListener("click", callFriendModalFunc, { once: true });
-closemodal.addEventListener("click", closeModalCallFriend);
+  function deleteTwoAnswer() { //50/50
+  questionHTMLList.childNodes.forEach(item => {
+    console.log(item.textContent);
+    if(item.textContent == questionsL[count].incorrectAnswer[0] || item.textContent == questionsL[count].incorrectAnswer[1]) {
+      item.textContent = '';
+    }
+  });
 
-//Функция включения фоновой музыки
-playBckgMusic();
+};
 
-//Помощь зала
-tipPollAudience.addEventListener("click", getPollTip, { once: true });
+function upWiningColumn() {
+  costWiningColumn.childNodes.forEach((item, i)=> {
+  });
+
+  costWiningColumn.childNodes[count].classList.add('costWinGold');
+
+  if(costWiningColumn.childNodes[count-1]) {
+    costWiningColumn.childNodes[count-1].classList.remove('costWinGold');
+  }
+}  
