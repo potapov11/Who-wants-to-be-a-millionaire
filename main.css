@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 
-html{
+html {
   overflow: hidden;
 }
 
@@ -12,18 +12,18 @@ html{
   min-height: 100vh;
   padding: 0;
   margin: 0;
-  background: url('img/bckg.png');
+  background: url("img/bckg.png");
   background-repeat: no-repeat;
-  background-color: #040C15;
+  background-color: #040c15;
   overflow: hidden;
 }
 
 .logo-img {
   margin: 0 auto;
   margin-top: 15px;
-  width: 434px;
-  height: 434px;
-  background: url('img/centr-logo-bkcg.png');
+  width: 250px;
+  height: 250px;
+  background: url("img/centr-logo-bkcg.png");
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -39,9 +39,15 @@ html{
   width: 66px;
   height: 47px;
   left: 802px;
-  top: 48px;  
+  top: 48px;
   padding: 5px;
-  background: radial-gradient(67.01% 9609.94% at 50.1% 77.5%, #164F7F 40%, #658AA5 79.01%, rgba(17, 17, 17, 0) 100%, #008AFF 100%);
+  background: radial-gradient(
+    67.01% 9609.94% at 50.1% 77.5%,
+    #164f7f 40%,
+    #658aa5 79.01%,
+    rgba(17, 17, 17, 0) 100%,
+    #008aff 100%
+  );
   border-radius: 30px;
   cursor: pointer;
 }
@@ -61,7 +67,7 @@ html{
   display: block;
   width: 51px;
   height: 14px;
-  background-image: url('img/50_50.png');
+  background-image: url("img/50_50.png");
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -70,7 +76,7 @@ html{
   display: block;
   width: 51px;
   height: 30px;
-  background-image: url('img/pollaud.png');
+  background-image: url("img/pollaud.png");
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -79,7 +85,7 @@ html{
   display: block;
   width: 51px;
   height: 33px;
-  background-image: url('img/tipsphone.png');
+  background-image: url("img/tipsphone.png");
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -108,7 +114,7 @@ html{
   padding-right: 10px;
   padding-top: 10px;
   padding-bottom: 5px;
-  background-image: url('img/answBtn.png');
+  background-image: url("img/answBtn.png");
   background-repeat: no-repeat;
   background-size: contain;
   list-style: none;
@@ -117,7 +123,7 @@ html{
   webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-.question-item:hover{
+.question-item:hover {
   opacity: 0.8;
 }
 
@@ -132,7 +138,7 @@ html{
   padding-bottom: 20px;
   color: white;
   font-weight: 500;
-  background-image: url('img/titleBtn.png');
+  background-image: url("img/titleBtn.png");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -152,31 +158,29 @@ html{
   margin-bottom: 3px;
   padding-left: 5px;
   text-align: left;
-  color: #F4952E;
+  color: #f4952e;
   font-size: 18px;
   border-radius: 5px;
 }
 
 .costWinGold {
-  background: linear-gradient(180deg, #FAD448 0%, #F38D2A 100%);
+  background: linear-gradient(180deg, #fad448 0%, #f38d2a 100%);
   color: black;
 }
 
 .correctAnswer {
-  /* width: 50%;
-  height: 45px; */
-  background: url('img/correctAnswBig.png');
+  background: url("img/correctAnswBig.png");
   background-repeat: no-repeat;
-  background-size: contain ;
+  background-size: contain;
   border-radius: 24px;
 }
 
 .incorrectAnswer {
   width: 50%;
   height: 45px;
-  background-image: url('img/incorrectAnswBig.png');
+  background-image: url("img/incorrectAnswBig.png");
   background-repeat: no-repeat;
-  background-size: contain ;
+  background-size: contain;
   border-radius: 24px;
 }
 
@@ -185,7 +189,7 @@ html{
   width: 100%;
   height: 355px;
   padding-top: 5px;
-  font-family: 'Open-sans', sans-serif;
+  font-family: "Open-sans", sans-serif;
 }
 
 .callfriendmodal {
@@ -194,7 +198,7 @@ html{
   top: 0;
   width: 626px;
   height: 444px;
-  background-image: url('img/bckg-modal.png');
+  background-image: url("img/bckg-modal.png");
   background-color: #04090c;
   background-repeat: no-repeat;
 }
@@ -206,10 +210,14 @@ html{
   display: block;
 }
 
-.callmodaltitle, .callmodaltext, .callmodaltextanswer, .calltitle, .polltitle {
+.callmodaltitle,
+.callmodaltext,
+.callmodaltextanswer,
+.calltitle,
+.polltitle {
   margin: 0;
   color: #ffffff;
-  font-family: 'Open-sans', sans-serif;
+  font-family: "Open-sans", sans-serif;
 }
 
 .callmodaltitle {
@@ -229,13 +237,14 @@ html{
   font-size: 22px;
 }
 
-.closemodal, .closemodalPoll {
+.closemodal,
+.closemodalPoll {
   position: absolute;
   bottom: 35px;
   right: 26%;
   width: 281px;
   height: 41.04px;
-  background: linear-gradient(180deg, #FAD448 0%, #F38D2A 100%);
+  background: linear-gradient(180deg, #fad448 0%, #f38d2a 100%);
   font-size: 20px;
   border: none;
 }
@@ -257,7 +266,7 @@ html{
   top: 0;
   width: 626px;
   height: 444px;
-  background-image: url('img/bckg-modal.png');
+  background-image: url("img/bckg-modal.png");
   background-color: #04090c;
   background-repeat: no-repeat;
 }
@@ -271,7 +280,7 @@ html{
 .pollAnswertext {
   margin-top: 10px;
   font-size: 24px;
-  font-family: 'Open-sans', sans-serif;
+  font-family: "Open-sans", sans-serif;
   color: #ffffff;
 }
 
@@ -302,22 +311,21 @@ html{
   position: absolute;
   left: 0;
   top: 125px;
-  background-color: #040C15;
+  background-color: #040c15;
   width: 40px;
   height: 40px;
-  background-image: url('img/icon-play.png');
+  background-image: url("img/icon-play.png");
   background-repeat: no-repeat;
   border: none;
   cursor: pointer;
 }
 
-.bckgMusicStop{
-  background-image: url('img/icon-stop.png');
+.bckgMusicStop {
+  background-image: url("img/icon-stop.png");
 }
-.bckgMusicPlay{
-  background-image: url('img/icon-play.png');
+.bckgMusicPlay {
+  background-image: url("img/icon-play.png");
 }
-
 
 @media (max-width: 1200px) {
   .costWinning {
@@ -330,17 +338,23 @@ html{
     width: 900px;
   }
 
-  .question-title{
+  .question-title {
     padding-top: 20px;
     font-size: 18px;
     padding-left: 15px;
     padding-right: 15px;
   }
+
+  .logo-img {
+    margin-top: 10px;
+    background-image: url("img/centr-logo-bkcg-min.png");
+    width: 250px;
+    height: 250px;
+  }
 }
 
-
-@media (max-width: 770px){
-  .container{
+@media (max-width: 770px) {
+  .container {
     width: 500px;
   }
 
@@ -352,7 +366,7 @@ html{
   }
 
   .question-title {
-    background-image: url('img/question-title-mobile-m.png');
+    background-image: url("img/question-title-mobile-m.png");
     background-size: contain;
   }
 
@@ -364,14 +378,15 @@ html{
 
   .logo-img {
     margin-top: 10px;
-    background-image: url('img/centr-logo-bkcg-min.png');
+    background-image: url("img/centr-logo-bkcg-min.png");
     width: 250px;
     height: 250px;
   }
 
-  .callfriendmodal, .pollaudiencemodal {
+  .callfriendmodal,
+  .pollaudiencemodal {
     width: 388px;
-    background-image: url('img/bckg-modal-min.png');
+    background-image: url("img/bckg-modal-min.png");
     height: 270px;
   }
 
@@ -385,47 +400,49 @@ html{
     font-size: 18px;
   }
 
-  .callmodaltextanswer{
+  .callmodaltextanswer {
     margin-top: 11px;
     font-size: 18px;
-}
+  }
 
   .callmodaltext {
     margin-top: 18px;
     font-size: 18px;
   }
 
-  .closemodal, .closemodalPoll{
+  .closemodal,
+  .closemodalPoll {
     bottom: 10px;
     right: 15%;
   }
 
   .pollAnswers {
     height: 80%;
-}
+  }
 
-  .costWinning{
+  .costWinning {
     right: 20px;
     top: 45px;
   }
 }
 
-@media (max-width: 480px){
+@media (max-width: 480px) {
   .polltitle {
     margin-top: 0px;
-}
+  }
 
-.calltitle {
-  position: absolute;
-  top: 10px;
-  right: 40%;
-}
+  .calltitle {
+    position: absolute;
+    top: 10px;
+    right: 40%;
+  }
 
-  .pollAnswertext{
+  .pollAnswertext {
     margin-top: -10px;
   }
-  
-  .pollaudience, .callfriendmodal{
+
+  .pollaudience,
+  .callfriendmodal {
     left: 8px;
   }
 
@@ -433,7 +450,7 @@ html{
     width: 70%;
   }
 
-  .question-title{
+  .question-title {
     width: 80%;
     padding-left: 20px;
     padding-right: 20px;
@@ -452,12 +469,12 @@ html{
     margin: 10px auto;
   }
 
-  .bckgMusic{
+  .bckgMusic {
     top: 85px;
     left: 50px;
   }
 
-  .logo-img{
+  .logo-img {
     width: 200px;
     height: 200px;
   }
@@ -471,20 +488,20 @@ html{
     top: -45px;
     align-items: center;
     width: 100%;
-}
+  }
 
-.costWinningBox {
-  width: 108px;
-  height: 55px;
-  margin: 0 auto;
-  margin-bottom: 10px;
-  overflow: hidden;
-}
+  .costWinningBox {
+    width: 108px;
+    height: 55px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    overflow: hidden;
+  }
 
-.costWinning-item {
-  padding: 0;
-  text-align: center;
-}
+  .costWinning-item {
+    padding: 0;
+    text-align: center;
+  }
 }
 
 .topCostWinning {
@@ -510,7 +527,7 @@ html{
   background-color: transparent;
 }
 
-.modalwininner{
+.modalwininner {
   align-items: center;
   justify-content: space-around;
   flex-direction: column;
@@ -520,11 +537,11 @@ html{
   background-position: center center;
   background-size: contain;
   background-repeat: no-repeat;
-} 
+}
 
 .modalwininner p {
   color: #ffffff;
-  font-family: 'Open-sans', sans-serif;
+  font-family: "Open-sans", sans-serif;
   font-size: 30px;
 }
 
@@ -532,7 +549,7 @@ html{
   color: #04090c;
   width: 281px;
   height: 41.04px;
-  background: linear-gradient(180deg, #FAD448 0%, #F38D2A 100%);
+  background: linear-gradient(180deg, #fad448 0%, #f38d2a 100%);
   font-size: 20px;
   border: none;
 }
@@ -549,4 +566,3 @@ html{
 .zindex {
   z-index: 1;
 }
-
